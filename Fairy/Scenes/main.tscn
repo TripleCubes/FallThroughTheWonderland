@@ -1,0 +1,37 @@
+[gd_scene load_steps=6 format=3 uid="uid://05dqsuomo1ie"]
+
+[ext_resource type="Script" path="res://Scripts/main.gd" id="1_bj5mk"]
+[ext_resource type="PackedScene" uid="uid://b11l3jfwxwkgn" path="res://Scenes/fairy.tscn" id="1_o7v5p"]
+[ext_resource type="Texture2D" uid="uid://covkg14ill8pu" path="res://Assets/Sprites/tileset.png" id="2_kqed6"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ja4hx"]
+texture = ExtResource("2_kqed6")
+texture_region_size = Vector2i(10, 10)
+0:0/0 = 0
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-5, -5, 5, -5, 5, 5, -5, 5)
+
+[sub_resource type="TileSet" id="TileSet_qk3li"]
+tile_size = Vector2i(10, 10)
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_ja4hx")
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_bj5mk")
+
+[node name="Fairy" parent="." instance=ExtResource("1_o7v5p")]
+position = Vector2(72, 72)
+
+[node name="Camera2D" type="Camera2D" parent="Fairy"]
+position = Vector2(0, -10)
+zoom = Vector2(2, 2)
+limit_left = 0
+limit_right = 500
+position_smoothing_enabled = true
+
+[node name="TileMap" type="TileMap" parent="."]
+texture_filter = 1
+tile_set = SubResource("TileSet_qk3li")
+format = 2
+layer_0/tile_data = PackedInt32Array(983042, 0, 0, 983043, 0, 0, 983044, 0, 0, 983045, 0, 0, 983046, 0, 0, 983047, 0, 0, 1048584, 0, 0, 1048585, 0, 0, 1048586, 0, 0, 1048587, 0, 0, 1048588, 0, 0, 1048589, 0, 0, 1048590, 0, 0, 1048591, 0, 0, 1048592, 0, 0, 1048593, 0, 0, 1048594, 0, 0, 1048595, 0, 0, 1048596, 0, 0, 1048597, 0, 0, 1048598, 0, 0, 1048599, 0, 0, 983064, 0, 0, 983065, 0, 0, 917530, 0, 0, 851995, 0, 0, 786459, 0, 0, 720924, 0, 0, 655389, 0, 0, 589853, 0, 0, 524317, 0, 0, 458781, 0, 0, 393245, 0, 0, 327709, 0, 0, 262173, 0, 0, 196636, 0, 0, 196635, 0, 0, 131098, 0, 0, 131097, 0, 0, 131096, 0, 0, 131095, 0, 0)
