@@ -1,7 +1,7 @@
 extends Node2D
 
 func _ready():
-	$Sprite2D.material.set_shader_parameter("darkness_enabled", true) 
+	$Sprite2D.material.set_shader_parameter("darkness_enabled", false) 
 	
 func _process(_delta):
 	$Sprite2D.material.set_shader_parameter("fairy_pos_on_cam", 

@@ -17,8 +17,8 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-GlobalFunctions="*res://Scripts/global_functions.gd"
-Consts="*res://Scripts/consts.gd"
+GlobalFunctions="*res://Scripts/Singletons/global_functions.gd"
+Consts="*res://Scripts/Singletons/consts.gd"
 
 [display]
 
