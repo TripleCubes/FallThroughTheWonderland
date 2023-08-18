@@ -89,12 +89,12 @@ shape = SubResource("RectangleShape2D_goboj")
 position = Vector2(0, -10)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Sprite"]
-position = Vector2(0, -0.128085)
+position = Vector2(0, 0.495805)
 sprite_frames = SubResource("SpriteFrames_5mx5h")
-frame_progress = 0.68003
+frame_progress = 0.276815
 
 [node name="AnimatedSprite2DSlowFall" type="AnimatedSprite2D" parent="Sprite"]
 visible = false
+position = Vector2(0, 0.495805)
 sprite_frames = SubResource("SpriteFrames_ibcqr")
-frame = 1
-frame_progress = 0.0275166
+frame_progress = 0.201174
