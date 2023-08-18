@@ -59,7 +59,7 @@ func _physics_process(_delta):
 		vel += Vector2(-1, 0) * MOVE_SPEED * _delta
 	if Input.is_action_pressed("KEY_D"):
 		vel += Vector2(1, 0) * MOVE_SPEED * _delta
-	if is_on_floor() and Input.is_action_pressed("KEY_SPACE"):
+	if is_on_floor() and Input.is_action_just_pressed("KEY_SPACE"):
 		gravity = - JUMP_VELOCITY
 
 	gravity += GRAVITY_ACCELERATION * _delta
