@@ -1,0 +1,28 @@
+[gd_scene load_steps=3 format=3 uid="uid://t6luoyca32d2"]
+
+[ext_resource type="Script" path="res://Scripts/UI/coin_result.gd" id="1_qtulm"]
+[ext_resource type="Theme" uid="uid://bond37gfa0v24" path="res://Styles/style.tres" id="3_rjaqp"]
+
+[node name="CoinResult" type="Node2D"]
+texture_filter = 1
+script = ExtResource("1_qtulm")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+offset_left = 9.0
+offset_top = 7.0
+offset_right = 49.0
+offset_bottom = 47.0
+theme = ExtResource("3_rjaqp")
+theme_override_font_sizes/normal_font_size = 20
+text = "1
+"
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="."]
+offset_left = 8.0
+offset_top = 33.0
+offset_right = 48.0
+offset_bottom = 73.0
+theme = ExtResource("3_rjaqp")
+theme_override_font_sizes/normal_font_size = 20
+text = "0
+"

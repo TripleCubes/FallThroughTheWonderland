@@ -1,7 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://t6luoyca32d2"]
-
-[ext_resource type="Script" path="res://Scripts/UI/coin_result.gd" id="1_qtulm"]
-
-[node name="CoinResult" type="Node2D"]
-texture_filter = 1
-script = ExtResource("1_qtulm")

@@ -1,10 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://05dqsuomo1ie"]
+[gd_scene load_steps=7 format=3 uid="uid://05dqsuomo1ie"]
 
 [ext_resource type="Script" path="res://Scripts/main.gd" id="1_bj5mk"]
 [ext_resource type="PackedScene" uid="uid://vafawv505vnn" path="res://Scenes/fairy.tscn" id="1_o7v5p"]
 [ext_resource type="Texture2D" uid="uid://covkg14ill8pu" path="res://Assets/Sprites/tileset.png" id="2_kqed6"]
 [ext_resource type="Script" path="res://Scripts/Map/map_gen.gd" id="3_wgug8"]
-[ext_resource type="PackedScene" uid="uid://t6luoyca32d2" path="res://Scenes/coin_results.tscn" id="5_svo7f"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ja4hx"]
 texture = ExtResource("2_kqed6")
@@ -38,6 +37,3 @@ zoom = Vector2(2, 2)
 limit_left = 0
 limit_right = 500
 position_smoothing_enabled = true
-
-[node name="CoinResult" parent="." instance=ExtResource("5_svo7f")]
-position = Vector2(358, 70)
