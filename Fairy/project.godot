@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 GlobalFunctions="*res://Scripts/Singletons/global_functions.gd"
 Consts="*res://Scripts/Singletons/consts.gd"
+Stats="*res://Scripts/Singletons/stats.gd"
 
 [display]
 
@@ -58,6 +59,14 @@ KEY_1={
 "events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":49,"key_label":0,"unicode":49,"echo":false,"script":null)
 ]
 }
+
+[layer_names]
+
+2d_physics/layer_1="solid tile"
+2d_physics/layer_2="fairy collision"
+2d_physics/layer_3="coin collision"
+2d_physics/layer_4="fairy area"
+2d_physics/layer_5="coin area"
 
 [rendering]
 

@@ -4,6 +4,9 @@ extends Node2D
 @onready var _fairy: = get_node("/root/View/SubViewport/Main/Fairy")
 @onready var _fairy_sprite: = get_node("/root/View/SubViewport/Main/Fairy/Sprite")
 
+func get_fairy() -> Node2D:
+	return _fairy
+
 func get_fairy_pos_center() -> Vector2:
 	return _fairy_sprite.global_position
 

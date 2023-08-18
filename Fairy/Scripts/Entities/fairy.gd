@@ -8,6 +8,8 @@ const JUMP_VELOCITY: float = 8000
 
 var gravity: float = 0
 
+@onready var area = $Area2D
+
 var slow_falling: = false:
 	set(val):
 		if slow_falling == val:

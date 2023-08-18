@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://05dqsuomo1ie"]
+[gd_scene load_steps=8 format=3 uid="uid://05dqsuomo1ie"]
 
 [ext_resource type="Script" path="res://Scripts/main.gd" id="1_bj5mk"]
-[ext_resource type="PackedScene" uid="uid://vafawv505vnn" path="res://Scenes/fairy.tscn" id="1_o7v5p"]
+[ext_resource type="PackedScene" uid="uid://vafawv505vnn" path="res://Scenes/Entities/fairy.tscn" id="1_o7v5p"]
 [ext_resource type="Texture2D" uid="uid://covkg14ill8pu" path="res://Assets/Sprites/tileset.png" id="2_kqed6"]
 [ext_resource type="Script" path="res://Scripts/Map/map_gen.gd" id="3_wgug8"]
+[ext_resource type="PackedScene" uid="uid://8483byo3sj5e" path="res://Scenes/Entities/coin.tscn" id="5_x4s5m"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ja4hx"]
 texture = ExtResource("2_kqed6")
@@ -16,6 +17,7 @@ texture_region_size = Vector2i(10, 10)
 [sub_resource type="TileSet" id="TileSet_qk3li"]
 tile_size = Vector2i(10, 10)
 physics_layer_0/collision_layer = 1
+physics_layer_0/collision_mask = 0
 sources/0 = SubResource("TileSetAtlasSource_ja4hx")
 
 [node name="Main" type="Node2D"]
@@ -37,3 +39,14 @@ zoom = Vector2(2, 2)
 limit_left = 0
 limit_right = 500
 position_smoothing_enabled = true
+
+[node name="Coins" type="Node2D" parent="."]
+
+[node name="Coin" parent="Coins" instance=ExtResource("5_x4s5m")]
+position = Vector2(186, 250)
+
+[node name="Coin2" parent="Coins" instance=ExtResource("5_x4s5m")]
+position = Vector2(240, 300)
+
+[node name="Coin3" parent="Coins" instance=ExtResource("5_x4s5m")]
+position = Vector2(300, 310)
