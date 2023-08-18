@@ -32,10 +32,10 @@ func _draw():
 	if Engine.is_editor_hint():
 		return
 
-	# var mouse_pos: Vector2 = get_local_mouse_position()
-	# var dir_vec = (mouse_pos - $Sprite.position).normalized()
+	var mouse_pos: Vector2 = GlobalFunctions.get_local_mouse_pos(self)
+	var dir_vec = (mouse_pos - $Sprite.position).normalized()
 
-	# draw_line($Sprite.position + dir_vec*10, mouse_pos + dir_vec*1000, Color(1, 1, 1))
+	draw_line($Sprite.position + dir_vec*10, mouse_pos + dir_vec*1000, Color(1, 1, 1))
 	
 func _process(_delta):
 	$Sprite/AnimatedSprite2D.position.y = sin(float(Time.get_ticks_msec()) / 100) * 0.5

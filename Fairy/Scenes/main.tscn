@@ -22,7 +22,7 @@ sources/0 = SubResource("TileSetAtlasSource_ja4hx")
 script = ExtResource("1_bj5mk")
 
 [node name="Fairy" parent="." instance=ExtResource("1_o7v5p")]
-position = Vector2(240, 230)
+position = Vector2(170, 210)
 
 [node name="Camera2D" type="Camera2D" parent="Fairy"]
 position = Vector2(0, -10)
