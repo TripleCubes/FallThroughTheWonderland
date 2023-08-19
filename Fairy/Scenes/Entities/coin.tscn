@@ -1,25 +1,16 @@
-[gd_scene load_steps=7 format=3 uid="uid://8483byo3sj5e"]
+[gd_scene load_steps=6 format=3 uid="uid://8483byo3sj5e"]
 
 [ext_resource type="Texture2D" uid="uid://fmotjuwsbixa" path="res://Assets/Sprites/coin.png" id="1_7hej5"]
 [ext_resource type="Script" path="res://Scripts/Entities/coin.gd" id="1_rh15j"]
 [ext_resource type="Texture2D" uid="uid://dr7155vf0vo4m" path="res://Assets/Sprites/coin_side.png" id="3_k2vba"]
 [ext_resource type="Theme" uid="uid://bond37gfa0v24" path="res://Styles/style.tres" id="4_xcbox"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_uea7n"]
-size = Vector2(6, 13)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fgngd"]
 size = Vector2(8, 8)
 
-[node name="Coin" type="RigidBody2D"]
+[node name="Coin" type="Node2D"]
 texture_filter = 1
-collision_layer = 4
-gravity_scale = 0.0
 script = ExtResource("1_rh15j")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -6.5)
-shape = SubResource("RectangleShape2D_uea7n")
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 16

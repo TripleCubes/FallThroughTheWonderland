@@ -1,4 +1,4 @@
-extends RigidBody2D
+extends Node2D
 
 const FLIP_TIME_SEC: float = 1
 const FLIP_HEIGHT: float = 50
@@ -50,15 +50,15 @@ func _start_number_animation(num: int) -> void:
 		$Num/Num0.show()
 
 	var tween_0: = get_tree().create_tween()
-	tween_0.tween_property($Num, "position", Vector2(0, -20), 0.8)
+	tween_0.tween_property($Num, "position", Vector2(0, -20), Consts.COIN_FLIP_TIME_SEC)
 
 	var timer_0: = get_tree().create_timer(0.4)
 	timer_0.timeout.connect(func():
 		var tween_1: = get_tree().create_tween()
-		tween_1.tween_property($Num, "modulate", Color(0, 0, 0, 0), 0.4)
+		tween_1.tween_property($Num, "modulate", Color(0, 0, 0, 0), Consts.COIN_FLIP_TIME_SEC/2)
 	)
 
-	var timer_1: = get_tree().create_timer(0.8)
+	var timer_1: = get_tree().create_timer(Consts.COIN_FLIP_TIME_SEC)
 	timer_1.timeout.connect(func():
 		queue_free()
 	)

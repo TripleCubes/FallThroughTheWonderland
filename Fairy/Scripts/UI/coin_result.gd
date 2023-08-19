@@ -6,6 +6,15 @@ var effect_list_1: = []
 var effect_list_0: = []
 
 func flipped(result: int) -> void:
+	if effect_list_0.size() == 1 and effect_list_1.size() == 1:
+		if result == 1:
+			_apply_effect(effect_list_1[0].effect_name)
+		else:
+			_apply_effect(effect_list_0[0].effect_name)
+
+		_new_lists(8)
+		return
+
 	if result == 1:
 		_put_to_one_list(effect_list_1, effect_list_0)
 	else:
@@ -28,17 +37,20 @@ func _put_to_one_list(from: Array, to: Array) -> void:
 
 	to.reverse()
 
-	for i in effect_list_1.size():
-		var tween = get_tree().create_tween()
-		tween.tween_property(effect_list_1[i].sprite, "position", 
-								Vector2(i * ICON_WIDTH_PLUS_SPACING_PX, $IconSprites/Pos1.position.y), 
-								Consts.TWEEN_TIME_SEC).set_trans(Tween.TRANS_SINE)
+	var timer: = get_tree().create_timer(0.4)
+	timer.timeout.connect(func():
+		for i in effect_list_1.size():
+			var tween = get_tree().create_tween()
+			tween.tween_property(effect_list_1[i].sprite, "position", 
+									Vector2(i * ICON_WIDTH_PLUS_SPACING_PX, $IconSprites/Pos1.position.y), 
+									Consts.TWEEN_TIME_SEC).set_trans(Tween.TRANS_SINE)
 
-	for i in effect_list_0.size():
-		var tween = get_tree().create_tween()
-		tween.tween_property(effect_list_0[i].sprite, "position", 
-								Vector2(i * ICON_WIDTH_PLUS_SPACING_PX, $IconSprites/Pos0.position.y), 
-								Consts.TWEEN_TIME_SEC).set_trans(Tween.TRANS_SINE)
+		for i in effect_list_0.size():
+			var tween = get_tree().create_tween()
+			tween.tween_property(effect_list_0[i].sprite, "position", 
+									Vector2(i * ICON_WIDTH_PLUS_SPACING_PX, $IconSprites/Pos0.position.y), 
+									Consts.TWEEN_TIME_SEC).set_trans(Tween.TRANS_SINE)
+	)
 
 func _new_lists(num_effects_one_list: int) -> void:
 	_new_list(num_effects_one_list, 1)
@@ -73,3 +85,6 @@ func _new_list(num_effects: int, list_num: int) -> void:
 			effect_name = effect_name,
 			sprite = sprite,
 		})
+
+func _apply_effect(effect: EffectNames.Names) -> void:
+	pass

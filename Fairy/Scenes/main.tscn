@@ -50,3 +50,9 @@ position = Vector2(240, 300)
 
 [node name="Coin3" parent="Coins" instance=ExtResource("5_x4s5m")]
 position = Vector2(300, 310)
+
+[node name="Coin" parent="." instance=ExtResource("5_x4s5m")]
+position = Vector2(210, 290)
+
+[node name="Coin2" parent="." instance=ExtResource("5_x4s5m")]
+position = Vector2(270, 300)
