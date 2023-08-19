@@ -12,7 +12,7 @@ func flipped(result: int) -> void:
 		_put_to_one_list(effect_list_0, effect_list_1)
 
 func _ready():
-	_new_lists(4)
+	_new_lists(8)
 
 func _put_to_one_list(from: Array, to: Array) -> void:
 	for effect in to:
@@ -32,13 +32,13 @@ func _put_to_one_list(from: Array, to: Array) -> void:
 		var tween = get_tree().create_tween()
 		tween.tween_property(effect_list_1[i].sprite, "position", 
 								Vector2(i * ICON_WIDTH_PLUS_SPACING_PX, $IconSprites/Pos1.position.y), 
-								Consts.TWEEN_TIME).set_trans(Tween.TRANS_SINE)
+								Consts.TWEEN_TIME_SEC).set_trans(Tween.TRANS_SINE)
 
 	for i in effect_list_0.size():
 		var tween = get_tree().create_tween()
 		tween.tween_property(effect_list_0[i].sprite, "position", 
 								Vector2(i * ICON_WIDTH_PLUS_SPACING_PX, $IconSprites/Pos0.position.y), 
-								Consts.TWEEN_TIME).set_trans(Tween.TRANS_SINE)
+								Consts.TWEEN_TIME_SEC).set_trans(Tween.TRANS_SINE)
 
 func _new_lists(num_effects_one_list: int) -> void:
 	_new_list(num_effects_one_list, 1)

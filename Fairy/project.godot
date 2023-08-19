@@ -20,7 +20,6 @@ config/icon="res://icon.svg"
 GlobalFunctions="*res://Scripts/Singletons/global_functions.gd"
 Consts="*res://Scripts/Singletons/consts.gd"
 Stats="*res://Scripts/Singletons/stats.gd"
-CoinFlip="*res://Scripts/Singletons/coin_flip.gd"
 EffectNames="*res://Scripts/Singletons/effect_names.gd"
 
 [display]

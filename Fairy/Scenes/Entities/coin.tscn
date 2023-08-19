@@ -1,7 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://8483byo3sj5e"]
+[gd_scene load_steps=7 format=3 uid="uid://8483byo3sj5e"]
 
 [ext_resource type="Texture2D" uid="uid://fmotjuwsbixa" path="res://Assets/Sprites/coin.png" id="1_7hej5"]
 [ext_resource type="Script" path="res://Scripts/Entities/coin.gd" id="1_rh15j"]
+[ext_resource type="Texture2D" uid="uid://dr7155vf0vo4m" path="res://Assets/Sprites/coin_side.png" id="3_k2vba"]
+[ext_resource type="Theme" uid="uid://bond37gfa0v24" path="res://Styles/style.tres" id="4_xcbox"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uea7n"]
 size = Vector2(6, 13)
@@ -30,5 +32,33 @@ shape = SubResource("RectangleShape2D_fgngd")
 [node name="Coin" type="Sprite2D" parent="."]
 position = Vector2(0, -10)
 texture = ExtResource("1_7hej5")
+
+[node name="CoinSide" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(0, -10)
+texture = ExtResource("3_k2vba")
+
+[node name="Num" type="Node2D" parent="."]
+
+[node name="Num1" type="RichTextLabel" parent="Num"]
+visible = false
+offset_left = -1.0
+offset_top = -17.0
+offset_right = 39.0
+offset_bottom = 23.0
+theme = ExtResource("4_xcbox")
+theme_override_colors/default_color = Color(1, 0.847059, 0, 1)
+text = "1"
+
+[node name="Num0" type="RichTextLabel" parent="Num"]
+visible = false
+offset_left = -2.0
+offset_top = -17.0
+offset_right = 38.0
+offset_bottom = 23.0
+theme = ExtResource("4_xcbox")
+theme_override_colors/default_color = Color(1, 0.847059, 0, 1)
+text = "0
+"
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
