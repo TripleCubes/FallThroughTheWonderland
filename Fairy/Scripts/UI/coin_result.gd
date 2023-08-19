@@ -6,6 +6,11 @@ var effect_list_1: = []
 var effect_list_0: = []
 
 func flipped(result: int) -> void:
+	if result == 1:
+		$Boxes/Box1.start_flick()
+	else:
+		$Boxes/Box0.start_flick()
+	
 	if effect_list_0.size() == 1 and effect_list_1.size() == 1:
 		if result == 1:
 			_apply_effect(effect_list_1[0].effect_name)
@@ -24,8 +29,9 @@ func _ready():
 	_new_lists(8)
 
 func _put_to_one_list(from: Array, to: Array) -> void:
-	for effect in to:
-		effect.sprite.queue_free()
+	for i in to.size():
+		var effect = to[i]
+		_queue_free_animation(effect.sprite, i * 0.15)
 	to.clear()
 
 	var from_original_size: int = from.size()
@@ -37,7 +43,7 @@ func _put_to_one_list(from: Array, to: Array) -> void:
 
 	to.reverse()
 
-	var timer: = get_tree().create_timer(0.4)
+	var timer: = get_tree().create_timer(2)
 	timer.timeout.connect(func():
 		for i in effect_list_1.size():
 			var tween = get_tree().create_tween()
@@ -50,6 +56,26 @@ func _put_to_one_list(from: Array, to: Array) -> void:
 			tween.tween_property(effect_list_0[i].sprite, "position", 
 									Vector2(i * ICON_WIDTH_PLUS_SPACING_PX, $IconSprites/Pos0.position.y), 
 									Consts.TWEEN_TIME_SEC).set_trans(Tween.TRANS_SINE)
+	)
+
+func _queue_free_animation(sprite: Node2D, wait: float) -> void:
+	var timer_0 = get_tree().create_timer(wait)
+	timer_0.timeout.connect(func():
+		var tween_0 = get_tree().create_tween()
+		tween_0.tween_property(sprite, "position", Vector2(sprite.position.x, sprite.position.y - 80), 
+								1).set_trans(Tween.TRANS_SINE)
+	)
+
+	# var timer_1 = get_tree().create_timer(wait + 0.4)
+	# timer_1.timeout.connect(func():
+	# 	var tween_1 = get_tree().create_tween()
+	# 	tween_1.tween_property(sprite, "modulate", Color(0, 0, 0, 0), 
+	# 							0.2).set_trans(Tween.TRANS_SINE)
+	# )
+
+	var timer_2 = get_tree().create_timer(wait + 3)
+	timer_2.timeout.connect(func():
+		sprite.queue_free()
 	)
 
 func _new_lists(num_effects_one_list: int) -> void:
@@ -86,5 +112,5 @@ func _new_list(num_effects: int, list_num: int) -> void:
 			sprite = sprite,
 		})
 
-func _apply_effect(effect: EffectNames.Names) -> void:
+func _apply_effect(_effect: EffectNames.Names) -> void:
 	pass

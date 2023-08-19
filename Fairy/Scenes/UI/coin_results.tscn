@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://t6luoyca32d2"]
+[gd_scene load_steps=4 format=3 uid="uid://t6luoyca32d2"]
 
 [ext_resource type="Script" path="res://Scripts/UI/coin_result.gd" id="1_qtulm"]
+[ext_resource type="Script" path="res://Scripts/UI/box.gd" id="3_8hs5q"]
 [ext_resource type="Theme" uid="uid://bond37gfa0v24" path="res://Styles/style.tres" id="3_rjaqp"]
 
 [node name="CoinResult" type="Node2D"]
@@ -35,3 +36,19 @@ position = Vector2(0, 10)
 
 [node name="Pos0" type="Node2D" parent="IconSprites"]
 position = Vector2(0, 34)
+
+[node name="Boxes" type="Node2D" parent="."]
+
+[node name="Box1" type="Node2D" parent="Boxes"]
+position = Vector2(1, 5)
+script = ExtResource("3_8hs5q")
+w = 96.0
+h = 13.0
+color = Color(1, 0.847059, 0, 1)
+
+[node name="Box0" type="Node2D" parent="Boxes"]
+position = Vector2(1, 29)
+script = ExtResource("3_8hs5q")
+w = 96.0
+h = 13.0
+color = Color(1, 0.847059, 0, 1)

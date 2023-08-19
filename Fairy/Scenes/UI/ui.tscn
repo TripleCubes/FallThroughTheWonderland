@@ -10,6 +10,6 @@ anchor_mode = 0
 zoom = Vector2(2, 2)
 
 [node name="CoinResult" parent="." instance=ExtResource("1_o2f33")]
-position = Vector2(300, 0)
 
 [node name="Stats" parent="." instance=ExtResource("2_xtu1k")]
+position = Vector2(4, 60)
