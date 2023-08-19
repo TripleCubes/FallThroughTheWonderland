@@ -1,8 +1,8 @@
 extends Node2D
 
-@onready var _camera: = get_node("/root/View/SubViewport/Main/Fairy/Camera2D")
-@onready var _fairy: = get_node("/root/View/SubViewport/Main/Fairy")
-@onready var _fairy_sprite: = get_node("/root/View/SubViewport/Main/Fairy/Sprite")
+@onready var _camera: = get_node(Consts.MAIN_PATH + "Fairy/Camera2D")
+@onready var _fairy: = get_node(Consts.MAIN_PATH + "Fairy")
+@onready var _fairy_sprite: = get_node(Consts.MAIN_PATH + "Fairy/Sprite")
 
 func get_fairy() -> Node2D:
 	return _fairy
