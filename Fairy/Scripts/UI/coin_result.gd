@@ -66,15 +66,8 @@ func _queue_free_animation(sprite: Node2D, wait: float) -> void:
 								1).set_trans(Tween.TRANS_SINE)
 	)
 
-	# var timer_1 = get_tree().create_timer(wait + 0.4)
-	# timer_1.timeout.connect(func():
-	# 	var tween_1 = get_tree().create_tween()
-	# 	tween_1.tween_property(sprite, "modulate", Color(0, 0, 0, 0), 
-	# 							0.2).set_trans(Tween.TRANS_SINE)
-	# )
-
-	var timer_2 = get_tree().create_timer(wait + 3)
-	timer_2.timeout.connect(func():
+	var timer_1 = get_tree().create_timer(wait + 3)
+	timer_1.timeout.connect(func():
 		sprite.queue_free()
 	)
 
