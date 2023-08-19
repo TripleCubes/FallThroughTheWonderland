@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://crj8we6omf3ii"]
+[gd_scene load_steps=3 format=3 uid="uid://crj8we6omf3ii"]
 
 [ext_resource type="PackedScene" uid="uid://t6luoyca32d2" path="res://Scenes/UI/coin_results.tscn" id="1_o2f33"]
+[ext_resource type="PackedScene" uid="uid://b6xd1jw2fx1oq" path="res://Scenes/UI/stats.tscn" id="2_xtu1k"]
 
 [node name="UI" type="Node2D"]
 
@@ -10,3 +11,5 @@ zoom = Vector2(2, 2)
 
 [node name="CoinResult" parent="." instance=ExtResource("1_o2f33")]
 position = Vector2(300, 0)
+
+[node name="Stats" parent="." instance=ExtResource("2_xtu1k")]

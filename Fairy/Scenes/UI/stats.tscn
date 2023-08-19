@@ -1,3 +1,23 @@
-[gd_scene format=3 uid="uid://b6xd1jw2fx1oq"]
+[gd_scene load_steps=4 format=3 uid="uid://b6xd1jw2fx1oq"]
 
-[node name="stats" type="Node2D"]
+[ext_resource type="Script" path="res://Scripts/UI/stats.gd" id="1_xthxk"]
+[ext_resource type="Texture2D" uid="uid://fmotjuwsbixa" path="res://Assets/Sprites/coin.png" id="2_nlrna"]
+[ext_resource type="Theme" uid="uid://bond37gfa0v24" path="res://Styles/style.tres" id="2_o6auq"]
+
+[node name="Stats" type="Node2D"]
+texture_filter = 1
+script = ExtResource("1_xthxk")
+
+[node name="CoinCount" type="Node2D" parent="."]
+
+[node name="Sprite" type="Sprite2D" parent="CoinCount"]
+position = Vector2(7, 7)
+texture = ExtResource("2_nlrna")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CoinCount"]
+offset_left = 16.0
+offset_right = 56.0
+offset_bottom = 40.0
+theme = ExtResource("2_o6auq")
+text = "0
+ "

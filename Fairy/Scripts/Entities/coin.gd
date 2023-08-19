@@ -5,6 +5,7 @@ const FLIP_HEIGHT: float = 50
 const FLIP_ROTATION_SPEED_DEGREE_PER_SEC: float = 360
 
 @onready var _coin_result: = get_node(Consts.UI_PATH + "CoinResult")
+@onready var _stats = get_node(Consts.UI_PATH + "Stats")
 
 @onready var rnd_time: float = randf_range(0, 1000)
 
@@ -15,6 +16,9 @@ func _process(_delta):
 	_flip_animation(_delta)
 
 func _on_area_2d_area_entered(area):
+	if $CoinSide.visible or $Num/Num1.visible or $Num/Num0.visible:
+		return
+
 	if area == GlobalFunctions.get_fairy().area:
 		_start_flip_animation()
 
@@ -40,6 +44,7 @@ func _flip_animation(_delta: float) -> void:
 
 	var flip_result: = randi_range(0, 1)
 	_coin_result.flipped(flip_result)
+	_stats.coin_count += 1
 	_start_number_animation(flip_result)
 
 func _start_number_animation(num: int) -> void:
