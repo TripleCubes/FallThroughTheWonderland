@@ -26,4 +26,8 @@ position_smoothing_enabled = true
 
 [node name="Coins" type="Node2D" parent="."]
 
+[node name="Rains" type="Node2D" parent="."]
+
 [node name="Mushrooms" type="Node2D" parent="."]
+
+[node name="Clouds" type="Node2D" parent="."]

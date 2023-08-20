@@ -7,7 +7,7 @@
 size = Vector2(10, 15)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yk717"]
-size = Vector2(10, 10)
+size = Vector2(4, 4)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_plsv6"]
 atlas = ExtResource("1_0u4ji")
@@ -102,12 +102,12 @@ shape = SubResource("RectangleShape2D_yk717")
 position = Vector2(0, -10)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Sprite"]
-position = Vector2(0, 0.107896)
+position = Vector2(0, -0.498329)
 sprite_frames = SubResource("SpriteFrames_5mx5h")
-frame_progress = 0.6689
+frame_progress = 0.643645
 
 [node name="AnimatedSprite2DSlowFall" type="AnimatedSprite2D" parent="Sprite"]
 visible = false
-position = Vector2(0, 0.107896)
+position = Vector2(0, -0.498329)
 sprite_frames = SubResource("SpriteFrames_ibcqr")
-frame_progress = 0.428712
+frame_progress = 0.707467

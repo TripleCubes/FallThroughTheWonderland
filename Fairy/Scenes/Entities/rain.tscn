@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://dh66nes7abium"]
+
+[ext_resource type="Script" path="res://Scripts/Entities/rain.gd" id="1_f2uu6"]
+[ext_resource type="Texture2D" uid="uid://cxhjqd3c8epjg" path="res://Assets/Sprites/Enemies/rain.png" id="2_wpqnm"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kgus8"]
+size = Vector2(5, 5)
+
+[node name="Rain" type="Area2D"]
+texture_filter = 1
+collision_layer = 128
+collision_mask = 9
+script = ExtResource("1_f2uu6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_kgus8")
+
+[node name="Rain" type="Sprite2D" parent="."]
+texture = ExtResource("2_wpqnm")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

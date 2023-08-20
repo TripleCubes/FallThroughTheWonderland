@@ -69,6 +69,7 @@ KEY_1={
 2d_physics/layer_5="coin area"
 2d_physics/layer_6="mushroom"
 2d_physics/layer_7="cloud"
+2d_physics/layer_8="rain"
 
 [rendering]
 
