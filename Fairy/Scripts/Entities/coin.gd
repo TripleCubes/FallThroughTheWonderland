@@ -45,6 +45,7 @@ func _flip_animation(_delta: float) -> void:
 	var flip_result: = randi_range(0, 1)
 	_coin_result.flipped(flip_result)
 	_stats.coin_count += 1
+	_stats.glow = 1
 	_start_number_animation(flip_result)
 
 func _start_number_animation(num: int) -> void:

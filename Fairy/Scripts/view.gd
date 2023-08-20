@@ -8,7 +8,12 @@ func _ready():
 	
 func _process(_delta):
 	_set_glow_list()
-	
+
+	if GlobalFunctions.get_stats().glow != 0:
+		$Sprite2D.material.set_shader_parameter("fairy_glow_distance", 75)
+	else:
+		$Sprite2D.material.set_shader_parameter("fairy_glow_distance", 25)
+
 	$Sprite2D.material.set_shader_parameter("fairy_pos_on_cam", 
 									GlobalFunctions.get_fairy_pos_center() - GlobalFunctions.get_cam_pos())
 

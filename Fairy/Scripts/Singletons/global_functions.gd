@@ -8,6 +8,11 @@ extends Node2D
 @onready var _cloud_list: = get_node(Consts.MAIN_PATH + "Clouds")
 @onready var _map: TileMap = get_node(Consts.MAIN_PATH + "TileMap")
 
+@onready var _stats = get_node(Consts.UI_PATH + "Stats")
+
+func get_stats() -> Node2D:
+	return _stats
+
 func is_solid_tile(pos: Vector2) -> bool:
 	var tile_pos: = Vector2i(floor(pos.x / 10), floor(pos.y / 10))
 	var tile: = _map.get_cell_atlas_coords(0, tile_pos)

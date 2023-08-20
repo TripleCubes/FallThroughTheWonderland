@@ -1,8 +1,9 @@
 shader_type canvas_item;
 
-const float FAIRY_GLOW_DISTANCE = 50.0;
 const float OTHER_GLOW_DISTANCE = 35.0;
 const float GLOW_FADE_DISTANCE = 10.0;
+
+uniform float fairy_glow_distance = 0.0;
 
 uniform vec2 fairy_pos_on_cam;
 uniform bool darkness_enabled = false;
@@ -25,7 +26,7 @@ float glow(vec2 pixel_pos) {
 
 	float result = 0.0;
 
-	result = max(result, glow_curve(distance(pixel_pos, fairy_pos_on_cam), FAIRY_GLOW_DISTANCE));
+	result = max(result, glow_curve(distance(pixel_pos, fairy_pos_on_cam), fairy_glow_distance));
 
 	for (int i = 0; i < glow_list_size; i++) {
 		result = max(result, glow_curve(distance(pixel_pos, glow_list[i]), OTHER_GLOW_DISTANCE));
