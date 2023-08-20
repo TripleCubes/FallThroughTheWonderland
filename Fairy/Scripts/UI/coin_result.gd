@@ -14,7 +14,7 @@ func flipped(result: int) -> void:
 
 		var timer = get_tree().create_timer(2)
 		timer.timeout.connect(func():
-			_new_lists(4)
+			_new_lists(1)
 		)
 
 	if result == 1:
@@ -25,7 +25,7 @@ func flipped(result: int) -> void:
 		_put_to_one_list(effect_list_0, effect_list_1)
 
 func _ready():
-	_new_lists(4)
+	_new_lists(1)
 
 func _put_to_one_list(from: Array, to: Array) -> void:
 	for i in to.size():
@@ -82,7 +82,7 @@ func _new_list(num_effects: int, list_num: int) -> void:
 		list = effect_list_1
 
 	for effect in list:
-		effect.sprite.queue_free()
+		_queue_free_animation(effect.sprite, 0)
 	list.clear()
 
 	for i in num_effects:
