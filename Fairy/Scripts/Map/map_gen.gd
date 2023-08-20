@@ -16,8 +16,8 @@ func _process(_delta):
 
 func _place_walls() -> void:
 	for i in range(floor(_fairy.position.y / 10) - 20, floor(_fairy.position.y / 10 )+ 20):
-		set_cell(0, Vector2i(5, i), 0, Vector2i(0, 0))
-		set_cell(0, Vector2i(44, i), 0, Vector2i(0, 0))
+		set_cell(0, Vector2i(5, i), 0, Vector2i(0, 1))
+		set_cell(0, Vector2i(44, i), 0, Vector2i(1, 1))
 
 func _copy_maps() -> void:
 	if not _should_load():
@@ -41,12 +41,11 @@ func _copy(divider_num: int) -> float:
 			var y_from: int = i + start_y
 			var y_to: int = i + floor(next_load_point_y / 10)
 
-			var tile_data: = copy_from_tile_map.get_cell_tile_data(0, Vector2(x, y_from))
-			if tile_data == null:
+			var tile: = copy_from_tile_map.get_cell_atlas_coords(0, Vector2i(x, y_from))
+			if tile == null:
 				continue
-			self.set_cell(0, Vector2i(x, y_to), 0, tile_data.texture_origin)
+			self.set_cell(0, Vector2i(x, y_to), 0, tile)
 
-	print(divider.position.y - previous_divider.position.y)
 	return divider.position.y - previous_divider.position.y
 
 func _should_load() -> bool:
