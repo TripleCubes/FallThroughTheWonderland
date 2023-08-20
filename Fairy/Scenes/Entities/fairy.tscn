@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://cf6xldyptpk3j" path="res://Assets/Sprites/fairy_center.png" id="4_80ix4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_goboj"]
-size = Vector2(10, 15)
+size = Vector2(8, 14)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yk717"]
 size = Vector2(4, 4)
@@ -89,7 +89,7 @@ collision_layer = 2
 script = ExtResource("1_m7f5d")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -7.5)
+position = Vector2(0, -7)
 shape = SubResource("RectangleShape2D_goboj")
 
 [node name="Area2D" type="Area2D" parent="."]
@@ -104,18 +104,18 @@ shape = SubResource("RectangleShape2D_yk717")
 position = Vector2(0, -10)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Sprite"]
-position = Vector2(0, 0.468798)
+position = Vector2(0, -0.0296411)
 sprite_frames = SubResource("SpriteFrames_5mx5h")
-frame_progress = 0.92086
+frame_progress = 0.939151
 
 [node name="AnimatedSprite2DSlowFall" type="AnimatedSprite2D" parent="Sprite"]
 visible = false
-position = Vector2(0, 0.468798)
+position = Vector2(0, -0.0296411)
 sprite_frames = SubResource("SpriteFrames_ibcqr")
-frame_progress = 0.804872
+frame_progress = 0.209012
 
 [node name="FairyCenter" type="Sprite2D" parent="Sprite"]
-position = Vector2(0, 0.468798)
+position = Vector2(0, -0.0296411)
 texture = ExtResource("4_80ix4")
 script = ExtResource("2_5nohm")
 

@@ -10,7 +10,9 @@ func _ready():
 func _process(_delta):
 	_set_glow_list()
 
-	if GlobalFunctions.get_stats().glow != 0:
+	if GlobalFunctions.get_effects_stats().get_duration(EffectNames.Names.LIGHT) > 0:
+		$Sprite2D.material.set_shader_parameter("fairy_glow_distance", 150)
+	elif GlobalFunctions.get_stats().glow != 0:
 		$Sprite2D.material.set_shader_parameter("fairy_glow_distance", 75)
 	else:
 		$Sprite2D.material.set_shader_parameter("fairy_glow_distance", 25)
