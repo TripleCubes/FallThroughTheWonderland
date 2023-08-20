@@ -1,7 +1,7 @@
-extends Node2D
+extends Sprite2D
 
 const FLICK_DURATION_SEC: float = 3
-const FLICK_ALTERNATE_SEC: float = 0.4
+const FLICK_ALTERNATE_SEC: float = 0.3
 
 var flicking: bool:
 	get:

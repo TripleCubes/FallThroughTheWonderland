@@ -32,10 +32,10 @@ var slow_falling: = false:
 			$Sprite/AnimatedSprite2DSlowFall.hide()
 
 func take_damage() -> void:
-	if $Sprite.flicking:
+	if $Sprite/FairyCenter.flicking:
 		return
 
-	$Sprite.start_flick()
+	$Sprite/FairyCenter.start_flick()
 	GlobalFunctions.get_stats().health_count -= 1
 
 func _ready():
@@ -56,6 +56,7 @@ func _draw():
 func _process(_delta):
 	$Sprite/AnimatedSprite2D.position.y = sin(float(Time.get_ticks_msec()) / 100) * 0.5
 	$Sprite/AnimatedSprite2DSlowFall.position.y = sin(float(Time.get_ticks_msec()) / 100) * 0.5
+	$Sprite/FairyCenter.position.y = sin(float(Time.get_ticks_msec()) / 100) * 0.5
 
 	if Engine.is_editor_hint():
 		return
