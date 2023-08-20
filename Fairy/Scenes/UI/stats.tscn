@@ -1,16 +1,21 @@
-[gd_scene load_steps=6 format=3 uid="uid://b6xd1jw2fx1oq"]
+[gd_scene load_steps=10 format=3 uid="uid://b6xd1jw2fx1oq"]
 
 [ext_resource type="Script" path="res://Scripts/UI/stats.gd" id="1_xthxk"]
 [ext_resource type="Texture2D" uid="uid://fmotjuwsbixa" path="res://Assets/Sprites/coin.png" id="2_nlrna"]
 [ext_resource type="Theme" uid="uid://bond37gfa0v24" path="res://Styles/style.tres" id="2_o6auq"]
 [ext_resource type="Script" path="res://Scripts/UI/progress_bar_horizontal.gd" id="4_erk7b"]
 [ext_resource type="Script" path="res://Scripts/UI/health.gd" id="6_27xod"]
+[ext_resource type="Script" path="res://Scripts/UI/effects_stats.gd" id="6_jw0to"]
+[ext_resource type="Texture2D" uid="uid://c2y37dgvpjdvd" path="res://Assets/Sprites/Effects/aim_snap.png" id="7_57tuf"]
+[ext_resource type="Texture2D" uid="uid://bq6mp4w53xhs3" path="res://Assets/Sprites/Effects/fly.png" id="8_fd85o"]
+[ext_resource type="Texture2D" uid="uid://blsrja8tayoay" path="res://Assets/Sprites/Effects/light.png" id="9_cg8qu"]
 
 [node name="Stats" type="Node2D"]
 texture_filter = 1
 script = ExtResource("1_xthxk")
 
 [node name="CoinCount" type="Node2D" parent="."]
+position = Vector2(0, 15)
 
 [node name="Sprite" type="Sprite2D" parent="CoinCount"]
 position = Vector2(7, 7)
@@ -25,6 +30,7 @@ text = "0
  "
 
 [node name="Glow" type="Node2D" parent="."]
+position = Vector2(0, 15)
 
 [node name="UI_ProgressBarHorizontal" type="Node2D" parent="Glow"]
 position = Vector2(4, 19)
@@ -38,5 +44,57 @@ debug_fill_time_sec = 5.0
 debug_reverse_fill_time_sec = 5.0
 
 [node name="Health" type="Node2D" parent="."]
-position = Vector2(4, 32)
+position = Vector2(4, 2)
 script = ExtResource("6_27xod")
+
+[node name="Effects" type="Node2D" parent="."]
+position = Vector2(4, 48)
+script = ExtResource("6_jw0to")
+
+[node name="AimSnap" type="Sprite2D" parent="Effects"]
+position = Vector2(-100, 0)
+texture = ExtResource("7_57tuf")
+centered = false
+
+[node name="UI_ProgressBarHorizontal" type="Node2D" parent="Effects/AimSnap"]
+position = Vector2(20, 10)
+script = ExtResource("4_erk7b")
+length = 50.0
+color = Color(1, 1, 1, 1)
+fill_time_sec = 5.0
+reverse_fill_time_sec = 30.0
+init_reversed = true
+debug_fill_time_sec = 5.0
+debug_reverse_fill_time_sec = 5.0
+
+[node name="Fly" type="Sprite2D" parent="Effects"]
+position = Vector2(-100, 19)
+texture = ExtResource("8_fd85o")
+centered = false
+
+[node name="UI_ProgressBarHorizontal" type="Node2D" parent="Effects/Fly"]
+position = Vector2(20, 10)
+script = ExtResource("4_erk7b")
+length = 50.0
+color = Color(1, 1, 1, 1)
+fill_time_sec = 5.0
+reverse_fill_time_sec = 30.0
+init_reversed = true
+debug_fill_time_sec = 5.0
+debug_reverse_fill_time_sec = 5.0
+
+[node name="Light" type="Sprite2D" parent="Effects"]
+position = Vector2(-100, 38)
+texture = ExtResource("9_cg8qu")
+centered = false
+
+[node name="UI_ProgressBarHorizontal" type="Node2D" parent="Effects/Light"]
+position = Vector2(20, 10)
+script = ExtResource("4_erk7b")
+length = 50.0
+color = Color(1, 0.913725, 0.439216, 1)
+fill_time_sec = 5.0
+reverse_fill_time_sec = 30.0
+init_reversed = true
+debug_fill_time_sec = 5.0
+debug_reverse_fill_time_sec = 5.0

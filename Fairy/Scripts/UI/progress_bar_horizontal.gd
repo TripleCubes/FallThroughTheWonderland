@@ -22,7 +22,7 @@ var connected_to: UI_ProgressBarHorizontal
 
 func _ready():
 	if length == 0:
-		length = 100
+		length = 50
 	if color == Color(0, 0, 0):
 		color = Color(1, 1, 1)
 	if fill_time_sec == 0: 

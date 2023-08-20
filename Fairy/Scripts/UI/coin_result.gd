@@ -13,11 +13,11 @@ func flipped(result: int) -> void:
 	
 	if effect_list_0.size() == 1 and effect_list_1.size() == 1:
 		if result == 1:
-			_apply_effect(effect_list_1[0].effect_name)
+			GlobalFunctions.get_effects_stats().apply_effect(effect_list_1[0].effect_name)
 		else:
-			_apply_effect(effect_list_0[0].effect_name)
+			GlobalFunctions.get_effects_stats().apply_effect(effect_list_0[0].effect_name)
 
-		_new_lists(8)
+		_new_lists(1)
 		return
 
 	if result == 1:
@@ -26,7 +26,7 @@ func flipped(result: int) -> void:
 		_put_to_one_list(effect_list_0, effect_list_1)
 
 func _ready():
-	_new_lists(8)
+	_new_lists(1)
 
 func _put_to_one_list(from: Array, to: Array) -> void:
 	for i in to.size():
@@ -104,6 +104,3 @@ func _new_list(num_effects: int, list_num: int) -> void:
 			effect_name = effect_name,
 			sprite = sprite,
 		})
-
-func _apply_effect(_effect: EffectNames.Names) -> void:
-	pass

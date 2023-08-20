@@ -9,9 +9,13 @@ extends Node2D
 @onready var _map: TileMap = get_node(Consts.MAIN_PATH + "TileMap")
 
 @onready var _stats = get_node(Consts.UI_PATH + "Stats")
+@onready var _effects_stats = get_node(Consts.UI_PATH + "Stats/Effects")
 
 func get_stats() -> Node2D:
 	return _stats
+
+func get_effects_stats() -> Node2D:
+	return _effects_stats
 
 func is_solid_tile(pos: Vector2) -> bool:
 	var tile_pos: = Vector2i(floor(pos.x / 10), floor(pos.y / 10))
