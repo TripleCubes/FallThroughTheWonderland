@@ -10,3 +10,9 @@ var glow: float:
 		$Glow/UI_ProgressBarHorizontal.progress = val
 	get:
 		return $Glow/UI_ProgressBarHorizontal.progress
+
+var health_count: int:
+	set(val):
+		$Health.health_count = val
+	get:
+		return $Health.health_count

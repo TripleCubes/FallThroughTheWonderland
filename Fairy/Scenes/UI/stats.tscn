@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://b6xd1jw2fx1oq"]
+[gd_scene load_steps=6 format=3 uid="uid://b6xd1jw2fx1oq"]
 
 [ext_resource type="Script" path="res://Scripts/UI/stats.gd" id="1_xthxk"]
 [ext_resource type="Texture2D" uid="uid://fmotjuwsbixa" path="res://Assets/Sprites/coin.png" id="2_nlrna"]
 [ext_resource type="Theme" uid="uid://bond37gfa0v24" path="res://Styles/style.tres" id="2_o6auq"]
 [ext_resource type="Script" path="res://Scripts/UI/progress_bar_horizontal.gd" id="4_erk7b"]
+[ext_resource type="Script" path="res://Scripts/UI/health.gd" id="6_27xod"]
 
 [node name="Stats" type="Node2D"]
 texture_filter = 1
@@ -35,3 +36,7 @@ reverse_fill_time_sec = 15.0
 init_reversed = true
 debug_fill_time_sec = 5.0
 debug_reverse_fill_time_sec = 5.0
+
+[node name="Health" type="Node2D" parent="."]
+position = Vector2(4, 32)
+script = ExtResource("6_27xod")
