@@ -25,3 +25,5 @@ limit_right = 500
 position_smoothing_enabled = true
 
 [node name="Coins" type="Node2D" parent="."]
+
+[node name="Mushrooms" type="Node2D" parent="."]

@@ -1,6 +1,7 @@
 extends TileMap
 
 const _coin_scene: PackedScene = preload("res://Scenes/Entities/coin.tscn")
+const _mushroom_scene: PackedScene = preload("res://Scenes/Entities/mushroom.tscn")
 
 var _copy_from: = preload("res://Scenes/MapLoader/copy_from.tscn").instantiate()
 
@@ -45,15 +46,23 @@ func _copy(divider_num: int) -> float:
 
 			var tile: = copy_from_tile_map.get_cell_atlas_coords(0, Vector2i(x, y_from))
 
-			if tile == null:
+			if tile == Vector2i(-1, -1):
 				continue
 				
-			if tile == Vector2i(0, 2):
+			if tile == Vector2i(0, 2): # Coin
 				var pos = Vector2(x * 10, y_to * 10 + 20)
 				if GlobalFunctions.can_place_coin(pos):
 					var coin = _coin_scene.instantiate()
 					coin.position = pos
 					GlobalFunctions.get_coin_list().add_child(coin)
+				continue
+
+			if tile == Vector2i(1, 2): # Mushroom
+				var pos = Vector2(x * 10, y_to * 10 + 10)
+				if GlobalFunctions.can_place_mushroom(pos):
+					var mushroom = _mushroom_scene.instantiate()
+					mushroom.position = pos
+					GlobalFunctions.get_mushroom_list().add_child(mushroom)
 				continue
 
 			self.set_cell(0, Vector2i(x, y_to), 0, tile)
