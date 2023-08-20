@@ -1,7 +1,8 @@
-[gd_scene load_steps=15 format=3 uid="uid://vafawv505vnn"]
+[gd_scene load_steps=16 format=3 uid="uid://vafawv505vnn"]
 
 [ext_resource type="Texture2D" uid="uid://bmiih2ypijqcq" path="res://Assets/Sprites/fairy.png" id="1_0u4ji"]
 [ext_resource type="Script" path="res://Scripts/Entities/fairy.gd" id="1_m7f5d"]
+[ext_resource type="Script" path="res://Scripts/Entities/fairy_sprite.gd" id="2_5nohm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_goboj"]
 size = Vector2(10, 15)
@@ -92,7 +93,7 @@ shape = SubResource("RectangleShape2D_goboj")
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 8
-collision_mask = 16
+collision_mask = 240
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(0, -10)
@@ -100,14 +101,18 @@ shape = SubResource("RectangleShape2D_yk717")
 
 [node name="Sprite" type="Node2D" parent="."]
 position = Vector2(0, -10)
+script = ExtResource("2_5nohm")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Sprite"]
-position = Vector2(0, 0.222224)
+position = Vector2(0, -0.470502)
 sprite_frames = SubResource("SpriteFrames_5mx5h")
-frame_progress = 0.757133
+frame_progress = 0.0170807
 
 [node name="AnimatedSprite2DSlowFall" type="AnimatedSprite2D" parent="Sprite"]
 visible = false
-position = Vector2(0, 0.222224)
+position = Vector2(0, -0.470502)
 sprite_frames = SubResource("SpriteFrames_ibcqr")
-frame_progress = 0.783541
+frame_progress = 0.668674
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

@@ -4,6 +4,10 @@ extends CharacterBody2D
 const _thrown_coin_scene: PackedScene = preload("res://Scenes/Entities/thrown_coin.tscn")
 @onready var _thrown_coin_list: = get_node(Consts.MAIN_PATH + "ThrownCoins")
 
+@onready var _mushroom_list = get_node(Consts.MAIN_PATH + "Mushrooms")
+@onready var _cloud_list = get_node(Consts.MAIN_PATH + "Clouds")
+@onready var _rain_list = get_node(Consts.MAIN_PATH + "Rains")
+
 const MOVE_SPEED: float = 4000
 const GRAVITY_ACCELERATION: float = 15000
 const SLOW_FALL_VELOCITY: float = 1000
@@ -27,6 +31,13 @@ var slow_falling: = false:
 			$Sprite/AnimatedSprite2D.show()
 			$Sprite/AnimatedSprite2DSlowFall.hide()
 
+func take_damage() -> void:
+	if $Sprite.flicking:
+		return
+
+	$Sprite.start_flick()
+	GlobalFunctions.get_stats().health_count -= 1
+
 func _ready():
 	$Sprite/AnimatedSprite2D.play()
 	$Sprite/AnimatedSprite2DSlowFall.play()
@@ -49,6 +60,21 @@ func _process(_delta):
 	if Engine.is_editor_hint():
 		return
 
+	_throw_coin_process()
+
+	queue_redraw()
+
+func _on_area_2d_body_entered(body):
+	if body.get_parent() == _mushroom_list \
+	or body.get_parent() == _cloud_list:
+		take_damage()
+
+func _on_area_2d_area_entered(in_area):
+	if in_area.get_parent() == _rain_list:
+		take_damage()
+		in_area.queue_free()
+
+func _throw_coin_process() -> void:
 	if Input.is_action_just_pressed("MOUSE_LEFT") and GlobalFunctions.get_stats().coin_count > 0:
 		GlobalFunctions.get_stats().coin_count -= 1
 		var thrown_coin = _thrown_coin_scene.instantiate()
@@ -56,8 +82,6 @@ func _process(_delta):
 		thrown_coin.dir = (mouse_pos - $Sprite.position).normalized()
 		thrown_coin.global_position = $Sprite.global_position
 		_thrown_coin_list.add_child(thrown_coin)
-
-	queue_redraw()
 
 func _physics_process(_delta):
 	if Engine.is_editor_hint():
