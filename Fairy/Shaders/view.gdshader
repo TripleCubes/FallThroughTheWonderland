@@ -8,7 +8,7 @@ uniform float fairy_glow_distance = 0.0;
 uniform vec2 fairy_pos_on_cam;
 uniform bool darkness_enabled = false;
 
-uniform vec2 glow_list[50];
+uniform vec2 glow_list[60];
 uniform int glow_list_size;
 
 float glow_curve(float glow_value, float max_glow_distance) {

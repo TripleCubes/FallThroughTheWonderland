@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b8bxb2hp5a1v3"
-path="res://.godot/imported/glow.png-7b9ebc702513351a1eb99ba2cc631161.ctex"
+uid="uid://bj27rr1biahfm"
+path="res://.godot/imported/thrown_coin.png-b460c0311d576fbf06a2f6f0aa7a1292.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/Stats/glow.png"
-dest_files=["res://.godot/imported/glow.png-7b9ebc702513351a1eb99ba2cc631161.ctex"]
+source_file="res://Assets/Sprites/thrown_coin.png"
+dest_files=["res://.godot/imported/thrown_coin.png-b460c0311d576fbf06a2f6f0aa7a1292.ctex"]
 
 [params]
 

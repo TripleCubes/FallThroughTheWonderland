@@ -1,6 +1,9 @@
 @tool
 extends CharacterBody2D
 
+const _thrown_coin_scene: PackedScene = preload("res://Scenes/Entities/thrown_coin.tscn")
+@onready var _thrown_coin_list: = get_node(Consts.MAIN_PATH + "ThrownCoins")
+
 const MOVE_SPEED: float = 4000
 const GRAVITY_ACCELERATION: float = 15000
 const SLOW_FALL_VELOCITY: float = 1000
@@ -45,6 +48,14 @@ func _process(_delta):
 
 	if Engine.is_editor_hint():
 		return
+
+	if Input.is_action_just_pressed("MOUSE_LEFT") and GlobalFunctions.get_stats().coin_count > 0:
+		GlobalFunctions.get_stats().coin_count -= 1
+		var thrown_coin = _thrown_coin_scene.instantiate()
+		var mouse_pos: Vector2 = GlobalFunctions.get_local_mouse_pos(self)
+		thrown_coin.dir = (mouse_pos - $Sprite.position).normalized()
+		thrown_coin.global_position = $Sprite.global_position
+		_thrown_coin_list.add_child(thrown_coin)
 
 	queue_redraw()
 

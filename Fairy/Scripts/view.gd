@@ -2,6 +2,7 @@ extends Node2D
 
 @onready var _rain_list: = get_node(Consts.MAIN_PATH + "Rains")
 @onready var _coin_list: = get_node(Consts.MAIN_PATH + "Coins")
+@onready var _thrown_coin_list: = get_node(Consts.MAIN_PATH + "ThrownCoins")
 
 func _ready():
 	$Sprite2D.material.set_shader_parameter("darkness_enabled", true) 
@@ -31,6 +32,12 @@ func _set_glow_list() -> void:
 			break
 		var coin: = _coin_list.get_child(_coin_list.get_child_count() - i - 1)
 		list.append(Vector2(coin.global_position.x, coin.global_position.y - 10) - GlobalFunctions.get_cam_pos())
+	
+	for i in _thrown_coin_list.get_child_count():
+		if i > 10:
+			break
+		var thrown_coin: = _thrown_coin_list.get_child(_thrown_coin_list.get_child_count() - i - 1)
+		list.append(thrown_coin.global_position - GlobalFunctions.get_cam_pos())
 
 	$Sprite2D.material.set_shader_parameter("glow_list_size", list.size())
 	$Sprite2D.material.set_shader_parameter("glow_list", list)

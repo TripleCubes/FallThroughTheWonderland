@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://e65tr2ovye2k"]
+
+[ext_resource type="Script" path="res://Scripts/Entities/thrown_coin.gd" id="1_086qu"]
+[ext_resource type="Texture2D" uid="uid://bj27rr1biahfm" path="res://Assets/Sprites/thrown_coin.png" id="2_f2tkx"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_apa3o"]
+size = Vector2(5, 5)
+
+[node name="thrown_coin" type="Area2D"]
+texture_filter = 1
+collision_layer = 256
+collision_mask = 97
+script = ExtResource("1_086qu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_apa3o")
+
+[node name="ThrownCoin" type="Sprite2D" parent="."]
+texture = ExtResource("2_f2tkx")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
