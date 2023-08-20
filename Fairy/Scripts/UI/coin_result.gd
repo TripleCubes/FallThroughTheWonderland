@@ -6,27 +6,26 @@ var effect_list_1: = []
 var effect_list_0: = []
 
 func flipped(result: int) -> void:
-	if result == 1:
-		$Boxes/Box1.start_flick()
-	else:
-		$Boxes/Box0.start_flick()
-	
 	if effect_list_0.size() == 1 and effect_list_1.size() == 1:
 		if result == 1:
 			GlobalFunctions.get_effects_stats().apply_effect(effect_list_1[0].effect_name)
 		else:
 			GlobalFunctions.get_effects_stats().apply_effect(effect_list_0[0].effect_name)
 
-		_new_lists(1)
-		return
+		var timer = get_tree().create_timer(2)
+		timer.timeout.connect(func():
+			_new_lists(4)
+		)
 
 	if result == 1:
+		$Boxes/Box1.start_flick()
 		_put_to_one_list(effect_list_1, effect_list_0)
 	else:
+		$Boxes/Box0.start_flick()
 		_put_to_one_list(effect_list_0, effect_list_1)
 
 func _ready():
-	_new_lists(1)
+	_new_lists(4)
 
 func _put_to_one_list(from: Array, to: Array) -> void:
 	for i in to.size():
@@ -94,9 +93,9 @@ func _new_list(num_effects: int, list_num: int) -> void:
 		sprite.centered = false
 		sprite.position.x = i * ICON_WIDTH_PLUS_SPACING_PX
 		if list_num == 0:
-			sprite.position.y = $IconSprites/Pos0.position.y
+			_new_sprite_animation(sprite, $IconSprites/Pos0.position.y)
 		else:
-			sprite.position.y = $IconSprites/Pos1.position.y
+			_new_sprite_animation(sprite, $IconSprites/Pos1.position.y)
 		
 		$IconSprites.add_child(sprite)
 
@@ -104,3 +103,12 @@ func _new_list(num_effects: int, list_num: int) -> void:
 			effect_name = effect_name,
 			sprite = sprite,
 		})
+
+func _new_sprite_animation(sprite: Sprite2D, y: float) -> void:
+	sprite.position.y = y - 120
+
+	var timer: = get_tree().create_timer(0.2)
+	timer.timeout.connect(func():
+		var tween = get_tree().create_tween()
+		tween.tween_property(sprite, "position", Vector2(sprite.position.x, y), 1).set_trans(Tween.TRANS_SINE)
+	)
