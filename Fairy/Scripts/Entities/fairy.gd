@@ -11,6 +11,7 @@ const _thrown_coin_scene: PackedScene = preload("res://Scenes/Entities/thrown_co
 const MOVE_SPEED: float = 4000
 const GRAVITY_ACCELERATION: float = 15000
 const SLOW_FALL_VELOCITY: float = 1000
+const FLY_VELOCITY: float = -3000
 const JUMP_VELOCITY: float = 8000
 
 var gravity: float = 0
@@ -109,6 +110,12 @@ func _physics_process(_delta):
 	else:
 		vel += Vector2(0, gravity) * _delta
 		slow_falling = false
+
+	if Input.is_action_pressed("KEY_SPACE") \
+	and GlobalFunctions.get_effects_stats().get_duration(EffectNames.Names.FLYING) > 0:
+		vel.y = FLY_VELOCITY * _delta
+		gravity = FLY_VELOCITY
+		slow_falling = true
 
 	velocity = vel
 	move_and_slide()
