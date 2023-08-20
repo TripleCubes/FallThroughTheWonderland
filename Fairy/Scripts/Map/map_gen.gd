@@ -1,5 +1,7 @@
 extends TileMap
 
+const _coin_scene: PackedScene = preload("res://Scenes/Entities/coin.tscn")
+
 var _copy_from: = preload("res://Scenes/MapLoader/copy_from.tscn").instantiate()
 
 const START_COPYING_AT: float = 300
@@ -42,8 +44,18 @@ func _copy(divider_num: int) -> float:
 			var y_to: int = i + floor(next_load_point_y / 10)
 
 			var tile: = copy_from_tile_map.get_cell_atlas_coords(0, Vector2i(x, y_from))
+
 			if tile == null:
 				continue
+				
+			if tile == Vector2i(0, 2):
+				var pos = Vector2(x * 10, y_to * 10 + 20)
+				if GlobalFunctions.can_place_coin(pos):
+					var coin = _coin_scene.instantiate()
+					coin.position = pos
+					GlobalFunctions.get_coin_list().add_child(coin)
+				continue
+
 			self.set_cell(0, Vector2i(x, y_to), 0, tile)
 
 	return divider.position.y - previous_divider.position.y

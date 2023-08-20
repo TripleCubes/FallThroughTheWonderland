@@ -3,6 +3,17 @@ extends Node2D
 @onready var _camera: = get_node(Consts.MAIN_PATH + "Fairy/Camera2D")
 @onready var _fairy: = get_node(Consts.MAIN_PATH + "Fairy")
 @onready var _fairy_sprite: = get_node(Consts.MAIN_PATH + "Fairy/Sprite")
+@onready var _coin_list: = get_node(Consts.MAIN_PATH + "Coins")
+
+func get_coin_list() -> Node2D:
+	return _coin_list
+
+func can_place_coin(pos: Vector2) -> bool:
+	for coin in _coin_list.get_children():
+		if pos.distance_to(coin.position) < Consts.COIN_DISTANCES:
+			return false
+
+	return true
 
 func get_fairy() -> Node2D:
 	return _fairy
