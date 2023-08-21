@@ -13,6 +13,8 @@ extends Node
 
 const _coin_scene: = preload("res://Scenes/Entities/coin.tscn")
 
+var intro_shown: = false
+
 var game_started: = false:
 	set(val):
 		game_started = val
@@ -25,6 +27,11 @@ var game_started: = false:
 			var tween_1: = get_tree().create_tween()
 			tween_1.tween_property(_coin_result, "position", Vector2(0, _coin_result.position.y), 
 										1.2).set_trans(Tween.TRANS_SINE)
+
+			if not intro_shown:
+				_fairy.show_exclamation_mark()
+
+			intro_shown = true
 		else:
 			_restart_game()
 

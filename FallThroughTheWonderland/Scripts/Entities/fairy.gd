@@ -47,6 +47,9 @@ var slow_falling: = false:
 			$Sprite/AnimatedSprite2D.show()
 			$Sprite/AnimatedSprite2DSlowFall.hide()
 
+func show_exclamation_mark() -> void:
+	GlobalFunctions.show_fade($ExclamationMark, 0, 0.8)
+
 func take_damage() -> void:
 	if $Sprite/FairyCenter.flicking:
 		return

@@ -1,9 +1,10 @@
-[gd_scene load_steps=17 format=3 uid="uid://vafawv505vnn"]
+[gd_scene load_steps=18 format=3 uid="uid://vafawv505vnn"]
 
 [ext_resource type="Texture2D" uid="uid://bmiih2ypijqcq" path="res://Assets/Sprites/fairy.png" id="1_0u4ji"]
 [ext_resource type="Script" path="res://Scripts/Entities/fairy.gd" id="1_m7f5d"]
 [ext_resource type="Script" path="res://Scripts/Entities/fairy_sprite.gd" id="2_5nohm"]
 [ext_resource type="Texture2D" uid="uid://cf6xldyptpk3j" path="res://Assets/Sprites/fairy_center.png" id="4_80ix4"]
+[ext_resource type="Theme" uid="uid://bond37gfa0v24" path="res://Styles/style.tres" id="5_vvyek"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_goboj"]
 size = Vector2(8, 14)
@@ -104,20 +105,30 @@ shape = SubResource("RectangleShape2D_yk717")
 position = Vector2(0, -10)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Sprite"]
-position = Vector2(0, -0.104537)
+position = Vector2(0, -0.436768)
 sprite_frames = SubResource("SpriteFrames_5mx5h")
-frame_progress = 0.14855
+frame_progress = 0.974616
 
 [node name="AnimatedSprite2DSlowFall" type="AnimatedSprite2D" parent="Sprite"]
 visible = false
-position = Vector2(0, -0.104537)
+position = Vector2(0, -0.436768)
 sprite_frames = SubResource("SpriteFrames_ibcqr")
-frame_progress = 0.819857
+frame_progress = 0.297327
 
 [node name="FairyCenter" type="Sprite2D" parent="Sprite"]
-position = Vector2(0, -0.104537)
+position = Vector2(0, -0.436768)
 texture = ExtResource("4_80ix4")
 script = ExtResource("2_5nohm")
+
+[node name="ExclamationMark" type="RichTextLabel" parent="."]
+modulate = Color(1, 1, 1, 0)
+offset_left = 8.0
+offset_top = -30.0
+offset_right = 48.0
+offset_bottom = 10.0
+theme = ExtResource("5_vvyek")
+theme_override_font_sizes/normal_font_size = 20
+text = "!"
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
