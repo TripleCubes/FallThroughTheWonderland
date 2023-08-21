@@ -76,3 +76,39 @@ func get_mouse_pos() -> Vector2:
 
 func get_local_mouse_pos(node: Node2D) -> Vector2:
 	return get_mouse_pos() - node.position
+
+func pos_on_screen(pos: Vector2) -> bool:
+	var viewport_pos: = pos - get_cam_pos()
+	return viewport_pos.x >= 0 and viewport_pos.x <= 500 and viewport_pos.y >= 0 and viewport_pos.y <= 300
+
+func get_nearest_enemy_to_line(line_p1: Vector2, line_p2: Vector2) -> Dictionary:
+	var result: = {
+		min_dist = 99999999,
+		choosen = null,
+		pos = Vector2(0, 0),
+		dir = Vector2(0, 0),
+		found = false,
+	}
+
+	var search: Callable = func(node: Node2D, offset_y: float, result: Dictionary):
+		for enemy in node.get_children():
+			var enemy_pos: = Vector2(enemy.global_position.x, enemy.global_position.y + offset_y * enemy.scale.y)
+
+			if not pos_on_screen(enemy_pos):
+				continue
+
+			if not Math.point_same_side_as_line_dir(enemy_pos, line_p1, line_p2):
+				continue
+
+			var dist: = Math.distance_point_to_line(enemy_pos, line_p1, line_p2)
+			if dist < result.min_dist:
+				result.min_dist = dist
+				result.choosen = enemy
+				result.pos = enemy_pos
+				result.dir = (enemy_pos - line_p1).normalized()
+				result.found = true
+
+	search.call(_mushroom_list, -5, result)
+	search.call(_cloud_list, 0, result)
+
+	return result

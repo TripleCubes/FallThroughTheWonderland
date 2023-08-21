@@ -51,7 +51,7 @@ func _restart_game() -> void:
 
 	_map_reset()
 
-	_fairy.position.x = 160
+	_fairy.position.x = 200
 	_fairy.position.y = 0
 
 	_map.next_load_point_y = _map.START_COPYING_AT

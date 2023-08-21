@@ -1,6 +1,8 @@
 @tool
 extends CharacterBody2D
 
+const AIM_SNAP_RANGE: float = 10;
+
 const _thrown_coin_scene: PackedScene = preload("res://Scenes/Entities/thrown_coin.tscn")
 @onready var _thrown_coin_list: = get_node(Consts.MAIN_PATH + "ThrownCoins")
 
@@ -15,6 +17,11 @@ const FLY_VELOCITY: float = -3000
 const JUMP_VELOCITY: float = 8000
 
 var gravity: float = 0
+
+var _aim_snap_result: Dictionary
+var _aim_snap_effect_active: bool:
+	get:
+		return GlobalFunctions.get_effects_stats().get_duration(EffectNames.Names.AIM_SNAPPING)
 
 @onready var area = $Area2D
 
@@ -52,7 +59,13 @@ func _draw():
 	var mouse_pos: Vector2 = GlobalFunctions.get_local_mouse_pos(self)
 	var dir_vec = (mouse_pos - $Sprite.position).normalized()
 
-	draw_line($Sprite.position + dir_vec*10, mouse_pos + dir_vec*1000, Color(1, 1, 1))
+	if not _aim_snap_effect_active:
+		draw_line($Sprite.position + dir_vec*10, mouse_pos + dir_vec*1000, Color(1, 1, 1))
+	else:
+		if _aim_snap_result.found and _aim_snap_result.min_dist < AIM_SNAP_RANGE:
+			draw_line($Sprite.position + _aim_snap_result.dir*10, $Sprite.position + _aim_snap_result.dir*1000, Color("FFD800"))
+		else:
+			draw_line($Sprite.position + dir_vec*10, mouse_pos + dir_vec*1000, Color("FFD800"))
 	
 func _process(_delta):
 	$Sprite/AnimatedSprite2D.position.y = sin(float(Time.get_ticks_msec()) / 100) * 0.5
@@ -70,8 +83,13 @@ func _process(_delta):
 		self.position.x = 250 - 1000
 
 	_set_camera_pos()
+	_process_aim_snap()
 
 	queue_redraw()
+
+func _process_aim_snap() -> void:
+	_aim_snap_result = GlobalFunctions.get_nearest_enemy_to_line($Sprite.global_position, 
+																	GlobalFunctions.get_mouse_pos())
 
 func _physics_process(_delta):
 	if Engine.is_editor_hint():
@@ -130,6 +148,11 @@ func _throw_coin_process() -> void:
 		GlobalFunctions.get_stats().coin_count -= 1
 		var thrown_coin = _thrown_coin_scene.instantiate()
 		var mouse_pos: Vector2 = GlobalFunctions.get_local_mouse_pos(self)
-		thrown_coin.dir = (mouse_pos - $Sprite.position).normalized()
+
+		if _aim_snap_effect_active and _aim_snap_result.found and _aim_snap_result.min_dist < AIM_SNAP_RANGE:
+			thrown_coin.dir = _aim_snap_result.dir
+		else:
+			thrown_coin.dir = (mouse_pos - $Sprite.position).normalized()
+
 		thrown_coin.global_position = $Sprite.global_position
 		_thrown_coin_list.add_child(thrown_coin)
