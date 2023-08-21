@@ -6,4 +6,4 @@ func _ready():
 
 func _process(_delta):
 	if Input.is_action_just_pressed("KEY_1"):
-		GlobalFunctions.restart_game()
+		GlobalVars.game_started = false

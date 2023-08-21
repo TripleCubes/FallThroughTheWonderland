@@ -20,6 +20,15 @@ func apply_effect(effect_name: EffectNames.Names) -> void:
 	tween.tween_property(effect_node.node, "position", Vector2(0, effect_node.node.position.y), 
 							Consts.TWEEN_TIME_SEC).set_trans(Tween.TRANS_SINE)
 
+func reset() -> void:
+	for effect_node in _effect_node_list.values():
+		var tween = get_tree().create_tween()
+		tween.tween_property(effect_node.node, "position", Vector2(-100, effect_node.node.position.y), 
+								Consts.TWEEN_TIME_SEC).set_trans(Tween.TRANS_SINE)
+
+		effect_node.visible = false
+		effect_node.progress_bar.progress = 0
+
 func _ready():
 	_effect_node_list[EffectNames.Names.AIM_SNAPPING] = {
 		node = $AimSnap,

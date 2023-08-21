@@ -75,6 +75,7 @@ func _process(_delta):
 
 func _set_camera_pos() -> void:
 	if not GlobalVars.game_started:
+		$Camera2D.position.x = 0
 		return
 
 	$Camera2D.global_position.x = 250

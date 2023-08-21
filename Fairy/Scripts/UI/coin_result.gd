@@ -14,7 +14,7 @@ func flipped(result: int) -> void:
 
 		var timer = get_tree().create_timer(2)
 		timer.timeout.connect(func():
-			_new_lists(1)
+			reset()
 		)
 
 	if result == 1:
@@ -24,8 +24,11 @@ func flipped(result: int) -> void:
 		$Boxes/Box0.start_flick()
 		_put_to_one_list(effect_list_0, effect_list_1)
 
+func reset() -> void:
+	_new_lists(4)
+
 func _ready():
-	_new_lists(1)
+	reset()
 
 func _put_to_one_list(from: Array, to: Array) -> void:
 	for i in to.size():

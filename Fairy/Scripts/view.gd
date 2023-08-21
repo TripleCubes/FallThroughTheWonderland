@@ -5,7 +5,7 @@ extends Node2D
 @onready var _thrown_coin_list: = get_node(Consts.MAIN_PATH + "ThrownCoins")
 
 func _ready():
-	$Sprite2D.material.set_shader_parameter("darkness_enabled", true) 
+	$Sprite2D.material.set_shader_parameter("darkness_enabled", false) 
 	
 func _process(_delta):
 	_set_glow_list()
