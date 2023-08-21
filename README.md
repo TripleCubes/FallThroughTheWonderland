@@ -1,5 +1,13 @@
+Art and codes by TripleCubes
+
+Written in 4 days for Mini Jam 139: Fae
+
+Limitation: Coin flipping as a mechanic
+
+Created using Godot engine, version 4.1.1
+
 # LICENSE
-Fairy is under the MIT license. Check [LICENSE](LICENSE) for full information.
+Fall through the wonderland is under the MIT license. Check [LICENSE](LICENSE) for full information.
 
 # THIRD PARTY LICENSES
 ## Godot
