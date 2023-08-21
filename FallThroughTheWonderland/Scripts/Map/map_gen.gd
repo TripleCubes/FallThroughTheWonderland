@@ -4,6 +4,10 @@ const _coin_scene: PackedScene = preload("res://Scenes/Entities/coin.tscn")
 const _mushroom_scene: PackedScene = preload("res://Scenes/Entities/mushroom.tscn")
 const _cloud_scene: PackedScene = preload("res://Scenes/Entities/cloud.tscn")
 
+@onready var _coin_list: = get_node(Consts.MAIN_PATH + "Coins")
+@onready var _mushroom_list: = get_node(Consts.MAIN_PATH + "Mushrooms")
+@onready var _cloud_list: = get_node(Consts.MAIN_PATH + "Clouds")
+
 var _copy_from: = preload("res://Scenes/MapLoader/copy_from.tscn").instantiate()
 
 const START_COPYING_AT: float = 300
@@ -17,6 +21,16 @@ var next_load_point_y: float = START_COPYING_AT
 func _process(_delta):
 	_place_walls()
 	_copy_maps()
+	_clean_passed_entities()
+
+func _clean_passed_entities() -> void:
+	_clean_passed_entity_list(_coin_list, 10)
+	_clean_passed_entity_list(_mushroom_list, 40)
+	_clean_passed_entity_list(_cloud_list, 40)
+
+func _clean_passed_entity_list(list: Node2D, keep: int) -> void:
+	while list.get_child_count() > keep:
+		list.remove_child(list.get_child(0))
 
 func _place_walls() -> void:
 	for i in range(floor(_fairy.position.y / 10) - 20, floor(_fairy.position.y / 10 )+ 20):
