@@ -5,6 +5,20 @@ const GRAVITY_ACCELERATION: float = 15000
 
 var gravity: float = 0
 
+var big_mushroom: = false:
+	set(val):
+		if big_mushroom == val:
+			return
+		
+		big_mushroom = val
+
+		if big_mushroom:
+			var tween: = get_tree().create_tween()
+			tween.tween_property(self, "scale", Vector2(2, 2), Consts.TWEEN_TIME_SEC).set_trans(Tween.TRANS_SINE)
+		else:
+			var tween: = get_tree().create_tween()
+			tween.tween_property(self, "scale", Vector2(1, 1), Consts.TWEEN_TIME_SEC).set_trans(Tween.TRANS_SINE)
+
 var _looking_left: = false:
 	set(val):
 		_looking_left = val
@@ -19,6 +33,11 @@ func _ready():
 		_looking_left = true
 
 	up_direction = Vector2(0, -1)
+
+	_process_big_mushroom()
+
+func _process(_delta):
+	_process_big_mushroom()
 	
 func _physics_process(_delta):
 	var vel: = Vector2(0, 0)
@@ -41,15 +60,21 @@ func _physics_process(_delta):
 	if _should_turn():
 		_looking_left = not _looking_left
 
+func _process_big_mushroom() -> void:
+	if GlobalFunctions.get_effects_stats().get_duration(EffectNames.Names.BIG_MUSHROOM) > 0:
+		big_mushroom = true
+	else:
+		big_mushroom = false
+
 func _should_turn() -> bool:
 	return not _bottom_tile_solid() or is_on_wall()
 
 func _bottom_tile_solid() -> bool:
 	var check_pos: Vector2
 	if _looking_left:
-		check_pos = Vector2(global_position.x - 5, global_position.y + 2)
+		check_pos = Vector2(global_position.x - 5 * scale.x, global_position.y + 2)
 	else:
-		check_pos = Vector2(global_position.x + 5, global_position.y + 2)
+		check_pos = Vector2(global_position.x + 5 * scale.x, global_position.y + 2)
 	
 	if GlobalFunctions.is_solid_tile(check_pos):
 		return true

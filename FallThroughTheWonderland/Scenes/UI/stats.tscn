@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://b6xd1jw2fx1oq"]
+[gd_scene load_steps=11 format=3 uid="uid://b6xd1jw2fx1oq"]
 
 [ext_resource type="Script" path="res://Scripts/UI/stats.gd" id="1_xthxk"]
 [ext_resource type="Texture2D" uid="uid://fmotjuwsbixa" path="res://Assets/Sprites/coin.png" id="2_nlrna"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://c2y37dgvpjdvd" path="res://Assets/Sprites/Effects/aim_snap.png" id="7_57tuf"]
 [ext_resource type="Texture2D" uid="uid://bq6mp4w53xhs3" path="res://Assets/Sprites/Effects/fly.png" id="8_fd85o"]
 [ext_resource type="Texture2D" uid="uid://blsrja8tayoay" path="res://Assets/Sprites/Effects/light.png" id="9_cg8qu"]
+[ext_resource type="Texture2D" uid="uid://bcmgqvf874bbg" path="res://Assets/Sprites/Effects/big_mushroom.png" id="10_fe710"]
 
 [node name="Stats" type="Node2D"]
 texture_filter = 1
@@ -93,6 +94,22 @@ position = Vector2(20, 10)
 script = ExtResource("4_erk7b")
 length = 50.0
 color = Color(1, 0.913725, 0.439216, 1)
+fill_time_sec = 5.0
+reverse_fill_time_sec = 45.0
+init_reversed = true
+debug_fill_time_sec = 5.0
+debug_reverse_fill_time_sec = 5.0
+
+[node name="BigMushroom" type="Sprite2D" parent="Effects"]
+position = Vector2(-100, 57)
+texture = ExtResource("10_fe710")
+centered = false
+
+[node name="UI_ProgressBarHorizontal" type="Node2D" parent="Effects/BigMushroom"]
+position = Vector2(20, 10)
+script = ExtResource("4_erk7b")
+length = 50.0
+color = Color(1, 0.631373, 0.556863, 1)
 fill_time_sec = 5.0
 reverse_fill_time_sec = 45.0
 init_reversed = true

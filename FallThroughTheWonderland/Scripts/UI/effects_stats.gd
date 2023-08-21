@@ -48,6 +48,12 @@ func _ready():
 		visible = false,
 	}
 
+	_effect_node_list[EffectNames.Names.BIG_MUSHROOM] = {
+		node = $BigMushroom,
+		progress_bar = $BigMushroom/UI_ProgressBarHorizontal,
+		visible = false,
+	}
+
 func _process(_delta):
 	for effect_node in _effect_node_list.values():
 		if not (effect_node.visible and effect_node.progress_bar.progress == 0):
