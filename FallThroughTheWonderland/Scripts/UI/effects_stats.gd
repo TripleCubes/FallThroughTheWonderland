@@ -15,6 +15,9 @@ func apply_effect(effect_name: EffectNames.Names) -> void:
 		GlobalFunctions.clear_all_enemies()
 		return
 
+	if effect_name == EffectNames.Names.NO_EFFECT:
+		return
+
 	var effect_node = _effect_node_list[effect_name]
 	effect_node.progress_bar.progress = 1
 	
@@ -59,6 +62,12 @@ func _ready():
 	_effect_node_list[EffectNames.Names.BIG_MUSHROOM] = {
 		node = $BigMushroom,
 		progress_bar = $BigMushroom/UI_ProgressBarHorizontal,
+		visible = false,
+	}
+
+	_effect_node_list[EffectNames.Names.CLOUD_FIRE_FASTER] = {
+		node = $CloudFireFaster,
+		progress_bar = $CloudFireFaster/UI_ProgressBarHorizontal,
 		visible = false,
 	}
 

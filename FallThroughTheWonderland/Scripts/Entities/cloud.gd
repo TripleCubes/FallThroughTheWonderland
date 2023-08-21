@@ -15,7 +15,10 @@ func _process(_delta):
 	if not GlobalVars.game_started:
 		return
 
-	_timer += _delta / ATTACK_DELAY
+	if GlobalFunctions.get_effects_stats().get_duration(EffectNames.Names.CLOUD_FIRE_FASTER) > 0:
+		_timer += (_delta / ATTACK_DELAY) * 4
+	else:
+		_timer += _delta / ATTACK_DELAY
 
 	if _timer > 1:
 		_timer = 0
