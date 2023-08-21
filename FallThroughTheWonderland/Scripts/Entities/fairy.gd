@@ -18,10 +18,18 @@ const JUMP_VELOCITY: float = 8000
 
 var gravity: float = 0
 
-var _aim_snap_result: Dictionary
-var _aim_snap_effect_active: bool:
+var aim_snap_result: Dictionary
+var aim_snap_effect_active: bool:
 	get:
 		return GlobalFunctions.get_effects_stats().get_duration(EffectNames.Names.AIM_SNAPPING)
+
+var aiming_dir: Vector2:
+	get:
+		if aim_snap_effect_active and aim_snap_result.found and aim_snap_result.min_dist < AIM_SNAP_RANGE:
+			return aim_snap_result.dir
+		else:
+			var mouse_pos: Vector2 = GlobalFunctions.get_local_mouse_pos(self)
+			return (mouse_pos - $Sprite.position).normalized()
 
 @onready var area = $Area2D
 
@@ -52,20 +60,16 @@ func _ready():
 
 	up_direction = Vector2(0, -1)
 
+	_process_aim_snap()
+
 func _draw():
 	if Engine.is_editor_hint():
 		return
 
-	var mouse_pos: Vector2 = GlobalFunctions.get_local_mouse_pos(self)
-	var dir_vec = (mouse_pos - $Sprite.position).normalized()
-
-	if not _aim_snap_effect_active:
-		draw_line($Sprite.position + dir_vec*10, mouse_pos + dir_vec*1000, Color(1, 1, 1))
+	if aim_snap_effect_active:
+		draw_line($Sprite.position + aiming_dir*10, $Sprite.position + aiming_dir*1000, Color("FFD800"))
 	else:
-		if _aim_snap_result.found and _aim_snap_result.min_dist < AIM_SNAP_RANGE:
-			draw_line($Sprite.position + _aim_snap_result.dir*10, $Sprite.position + _aim_snap_result.dir*1000, Color("FFD800"))
-		else:
-			draw_line($Sprite.position + dir_vec*10, mouse_pos + dir_vec*1000, Color("FFD800"))
+		draw_line($Sprite.position + aiming_dir*10, $Sprite.position + aiming_dir*1000, Color(1, 1, 1))
 	
 func _process(_delta):
 	$Sprite/AnimatedSprite2D.position.y = sin(float(Time.get_ticks_msec()) / 100) * 0.5
@@ -88,8 +92,8 @@ func _process(_delta):
 	queue_redraw()
 
 func _process_aim_snap() -> void:
-	_aim_snap_result = GlobalFunctions.get_nearest_enemy_to_line($Sprite.global_position, 
-																	GlobalFunctions.get_mouse_pos())
+	aim_snap_result = GlobalFunctions.get_aim_snap_result($Sprite.global_position, 
+															GlobalFunctions.get_mouse_pos())
 
 func _physics_process(_delta):
 	if Engine.is_editor_hint():
@@ -147,12 +151,6 @@ func _throw_coin_process() -> void:
 	if Input.is_action_just_pressed("MOUSE_LEFT") and GlobalFunctions.get_stats().coin_count > 0:
 		GlobalFunctions.get_stats().coin_count -= 1
 		var thrown_coin = _thrown_coin_scene.instantiate()
-		var mouse_pos: Vector2 = GlobalFunctions.get_local_mouse_pos(self)
-
-		if _aim_snap_effect_active and _aim_snap_result.found and _aim_snap_result.min_dist < AIM_SNAP_RANGE:
-			thrown_coin.dir = _aim_snap_result.dir
-		else:
-			thrown_coin.dir = (mouse_pos - $Sprite.position).normalized()
-
+		thrown_coin.dir = aiming_dir
 		thrown_coin.global_position = $Sprite.global_position
 		_thrown_coin_list.add_child(thrown_coin)

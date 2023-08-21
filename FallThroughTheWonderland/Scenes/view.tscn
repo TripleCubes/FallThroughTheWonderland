@@ -12,6 +12,10 @@ shader_parameter/fairy_pos_on_cam = null
 shader_parameter/darkness_enabled = false
 shader_parameter/glow_list = null
 shader_parameter/glow_list_size = null
+shader_parameter/aim_snap_active = false
+shader_parameter/aim_snap_line_p2 = null
+shader_parameter/aim_snap_rotated_dir_p1 = null
+shader_parameter/aim_snap_rotated_dir_p2 = null
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_2c8cb"]
 viewport_path = NodePath("SubViewport")

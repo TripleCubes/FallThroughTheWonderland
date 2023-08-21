@@ -64,6 +64,7 @@ length = 50.0
 color = Color(1, 1, 1, 1)
 fill_time_sec = 5.0
 reverse_fill_time_sec = 45.0
+init_filled = true
 init_reversed = true
 debug_fill_time_sec = 5.0
 debug_reverse_fill_time_sec = 5.0

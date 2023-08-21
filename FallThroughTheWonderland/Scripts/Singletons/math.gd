@@ -18,4 +18,4 @@ func point_same_side_as_line_dir(point: Vector2, line_p1: Vector2, line_p2: Vect
 	var a: = line_p1
 	var b: = line_p1 + vec
 	var c: = point
-	return (b.x - a.x)*(c.y - a.y) - (b.y - a.y)*(c.x - a.x) > 0;
+	return (b.x - a.x)*(c.y - a.y) - (b.y - a.y)*(c.x - a.x) > 0

@@ -81,14 +81,19 @@ func pos_on_screen(pos: Vector2) -> bool:
 	var viewport_pos: = pos - get_cam_pos()
 	return viewport_pos.x >= 0 and viewport_pos.x <= 500 and viewport_pos.y >= 0 and viewport_pos.y <= 300
 
-func get_nearest_enemy_to_line(line_p1: Vector2, line_p2: Vector2) -> Dictionary:
+func get_aim_snap_result(line_p1: Vector2, line_p2: Vector2) -> Dictionary:
 	var result: = {
 		min_dist = 99999999,
 		choosen = null,
 		pos = Vector2(0, 0),
 		dir = Vector2(0, 0),
 		found = false,
+		rotated_dir_p1 = line_p1,
+		rotated_dir_p2 = Vector2(0, 0)
 	}
+	var vec: = line_p2 - line_p1
+	vec = vec.rotated(deg_to_rad(-90))
+	result.rotated_dir_p2 = line_p1 + vec
 
 	var search: Callable = func(node: Node2D, offset_y: float, result: Dictionary):
 		for enemy in node.get_children():
