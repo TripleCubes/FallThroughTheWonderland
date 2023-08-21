@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://c74q3uj284xu0"]
+[gd_scene load_steps=11 format=3 uid="uid://c74q3uj284xu0"]
 
 [ext_resource type="PackedScene" uid="uid://05dqsuomo1ie" path="res://Scenes/main.tscn" id="1_4yi61"]
 [ext_resource type="Script" path="res://Scripts/view.gd" id="1_ttnmg"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://crj8we6omf3ii" path="res://Scenes/UI/ui.tscn" id="2_66mdd"]
 [ext_resource type="Script" path="res://Scripts/Menus/menus.gd" id="5_e5nc4"]
 [ext_resource type="PackedScene" uid="uid://fyqir8c1cu6y" path="res://Scenes/Menus/start_menu.tscn" id="6_tcfm8"]
+[ext_resource type="PackedScene" uid="uid://b3q5hkl30sg2h" path="res://Scenes/Menus/pause_menu.tscn" id="7_3v0k1"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_iu3f5"]
 shader = ExtResource("2_40t23")
@@ -52,3 +53,6 @@ centered = false
 script = ExtResource("5_e5nc4")
 
 [node name="StartMenu" parent="Menus" instance=ExtResource("6_tcfm8")]
+
+[node name="PauseMenu" parent="Menus" instance=ExtResource("7_3v0k1")]
+visible = false

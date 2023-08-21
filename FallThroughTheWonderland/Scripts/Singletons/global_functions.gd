@@ -12,6 +12,16 @@ extends Node2D
 @onready var _effects_stats = get_node(Consts.UI_PATH + "Stats/Effects")
 @onready var _tutorial = get_node(Consts.UI_PATH + "Tutorial")
 
+@onready var _pause_menu = get_node("/root/View/Menus/PauseMenu")
+
+func toggle_pause_menu() -> void:
+	if not _pause_menu.visible:
+		GlobalVars.showing_menus = true
+		_pause_menu.show()
+	else:
+		GlobalVars.showing_menus = false
+		_pause_menu.hide()
+
 func get_tutorial() -> Node2D:
 	return _tutorial
 

@@ -60,6 +60,8 @@ func _restart_game() -> void:
 
 	_map_reset()
 
+	_fairy.velocity = Vector2(0, 0)
+	_fairy.gravity = 0
 	_fairy.position.x = 200
 	_fairy.position.y = 0
 

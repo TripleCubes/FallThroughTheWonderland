@@ -1,0 +1,63 @@
+[gd_scene load_steps=5 format=3 uid="uid://b3q5hkl30sg2h"]
+
+[ext_resource type="Theme" uid="uid://bond37gfa0v24" path="res://Styles/style.tres" id="1_1xg80"]
+[ext_resource type="Script" path="res://Scripts/Menus/pause_menu.gd" id="1_3ruuf"]
+[ext_resource type="Script" path="res://Scripts/Menus/UI/button.gd" id="1_218fo"]
+[ext_resource type="Script" path="res://Scripts/Menus/UI/box.gd" id="3_5xjm2"]
+
+[node name="PauseMenu" type="Node2D"]
+texture_filter = 1
+script = ExtResource("1_3ruuf")
+
+[node name="Menus_Box" type="Node2D" parent="."]
+position = Vector2(390, 130)
+scale = Vector2(2, 2)
+script = ExtResource("3_5xjm2")
+size = Vector2(110, 170)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+offset_left = 428.0
+offset_top = 165.0
+offset_right = 580.0
+offset_bottom = 225.0
+theme = ExtResource("1_1xg80")
+theme_override_font_sizes/normal_font_size = 20
+text = "The game is not paused."
+
+[node name="BackToGame" type="Button" parent="."]
+offset_left = 428.0
+offset_top = 235.0
+offset_right = 500.0
+offset_bottom = 260.0
+scale = Vector2(2, 2)
+focus_mode = 0
+theme = ExtResource("1_1xg80")
+text = "Back to game
+"
+script = ExtResource("1_218fo")
+
+[node name="Restart" type="Button" parent="."]
+offset_left = 428.0
+offset_top = 305.0
+offset_right = 500.0
+offset_bottom = 330.0
+scale = Vector2(2, 2)
+focus_mode = 0
+theme = ExtResource("1_1xg80")
+text = "Restart"
+script = ExtResource("1_218fo")
+
+[node name="Credits" type="Button" parent="."]
+offset_left = 428.0
+offset_top = 375.0
+offset_right = 500.0
+offset_bottom = 400.0
+scale = Vector2(2, 2)
+focus_mode = 0
+theme = ExtResource("1_1xg80")
+text = "Credits"
+script = ExtResource("1_218fo")
+
+[connection signal="pressed" from="BackToGame" to="." method="_on_back_to_game_pressed"]
+[connection signal="pressed" from="Restart" to="." method="_on_restart_pressed"]
+[connection signal="pressed" from="Credits" to="." method="_on_credits_pressed"]
