@@ -21,6 +21,7 @@ GlobalFunctions="*res://Scripts/Singletons/global_functions.gd"
 Consts="*res://Scripts/Singletons/consts.gd"
 EffectNames="*res://Scripts/Singletons/effect_names.gd"
 GlobalVars="*res://Scripts/Singletons/global_vars.gd"
+Math="*res://Scripts/Singletons/math.gd"
 
 [display]
 
