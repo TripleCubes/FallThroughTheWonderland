@@ -22,7 +22,7 @@ offset_right = 580.0
 offset_bottom = 225.0
 theme = ExtResource("1_1xg80")
 theme_override_font_sizes/normal_font_size = 20
-text = "The game is not paused."
+text = "The game is not paused"
 
 [node name="BackToGame" type="Button" parent="."]
 offset_left = 428.0

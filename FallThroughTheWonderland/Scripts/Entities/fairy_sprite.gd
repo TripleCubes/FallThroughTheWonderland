@@ -22,6 +22,10 @@ func start_flick() -> void:
 func _process(_delta):
 	_flick_progress += _delta / FLICK_DURATION_SEC
 	if _flick_progress > 1:
+		if GlobalFunctions.get_stats().health_count <= 0:
+			get_parent().hide()
+			return
+
 		_draw_fairy = true
 		return
 

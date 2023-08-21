@@ -69,6 +69,9 @@ func _draw():
 	if Engine.is_editor_hint():
 		return
 
+	if not $Sprite.visible:
+		return
+
 	if aim_snap_effect_active:
 		draw_line($Sprite.position + aiming_dir*10, $Sprite.position + aiming_dir*1000, Color("FFD800"))
 	else:

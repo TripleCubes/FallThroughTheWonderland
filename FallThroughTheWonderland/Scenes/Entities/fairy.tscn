@@ -105,18 +105,18 @@ shape = SubResource("RectangleShape2D_yk717")
 position = Vector2(0, -10)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Sprite"]
-position = Vector2(0, -0.424545)
+position = Vector2(0, 0.341156)
 sprite_frames = SubResource("SpriteFrames_5mx5h")
-frame_progress = 0.380044
+frame_progress = 0.391735
 
 [node name="AnimatedSprite2DSlowFall" type="AnimatedSprite2D" parent="Sprite"]
 visible = false
-position = Vector2(0, -0.424545)
+position = Vector2(0, 0.341156)
 sprite_frames = SubResource("SpriteFrames_ibcqr")
-frame_progress = 0.144876
+frame_progress = 0.969675
 
 [node name="FairyCenter" type="Sprite2D" parent="Sprite"]
-position = Vector2(0, -0.424545)
+position = Vector2(0, 0.341156)
 texture = ExtResource("4_80ix4")
 script = ExtResource("2_5nohm")
 

@@ -13,6 +13,7 @@ extends Node2D
 @onready var _tutorial = get_node(Consts.UI_PATH + "Tutorial")
 
 @onready var _pause_menu = get_node("/root/View/Menus/PauseMenu")
+@onready var _restart_menu = get_node("/root/View/Menus/RestartMenu")
 
 func toggle_pause_menu() -> void:
 	if not _pause_menu.visible:
@@ -21,6 +22,10 @@ func toggle_pause_menu() -> void:
 	else:
 		GlobalVars.showing_menus = false
 		_pause_menu.hide()
+
+func show_restart_menu() -> void:
+	GlobalVars.showing_menus = true
+	_restart_menu.show()
 
 func get_tutorial() -> Node2D:
 	return _tutorial

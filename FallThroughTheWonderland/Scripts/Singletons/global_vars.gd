@@ -64,6 +64,7 @@ func _restart_game() -> void:
 	_fairy.gravity = 0
 	_fairy.position.x = 200
 	_fairy.position.y = 0
+	_fairy.get_node("Sprite").show()
 
 	_map.next_load_point_y = _map.START_COPYING_AT
 

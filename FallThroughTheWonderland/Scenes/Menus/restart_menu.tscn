@@ -1,0 +1,47 @@
+[gd_scene load_steps=5 format=3 uid="uid://bbwiyccj3w54g"]
+
+[ext_resource type="Script" path="res://Scripts/Menus/UI/box.gd" id="1_tq0ec"]
+[ext_resource type="Script" path="res://Scripts/Menus/restart_menu.gd" id="1_vi2gk"]
+[ext_resource type="Theme" uid="uid://bond37gfa0v24" path="res://Styles/style.tres" id="2_mlf5f"]
+[ext_resource type="Script" path="res://Scripts/Menus/UI/button.gd" id="3_1uxkd"]
+
+[node name="RestartMenu" type="Node2D"]
+texture_filter = 1
+script = ExtResource("1_vi2gk")
+
+[node name="Menus_Box" type="Node2D" parent="."]
+position = Vector2(390, 150)
+scale = Vector2(2, 2)
+script = ExtResource("1_tq0ec")
+size = Vector2(110, 150)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+offset_left = 428.0
+offset_top = 193.0
+offset_right = 580.0
+offset_bottom = 253.0
+theme = ExtResource("2_mlf5f")
+theme_override_font_sizes/normal_font_size = 20
+text = "The fairy has fallen: "
+
+[node name="Depth" type="RichTextLabel" parent="."]
+offset_left = 428.0
+offset_top = 250.0
+offset_right = 600.0
+offset_bottom = 320.0
+theme = ExtResource("2_mlf5f")
+theme_override_font_sizes/normal_font_size = 40
+text = "100cm"
+
+[node name="Restart" type="Button" parent="."]
+offset_left = 428.0
+offset_top = 342.0
+offset_right = 500.0
+offset_bottom = 367.0
+scale = Vector2(2, 2)
+focus_mode = 0
+theme = ExtResource("2_mlf5f")
+text = "Restart"
+script = ExtResource("3_1uxkd")
+
+[connection signal="pressed" from="Restart" to="." method="_on_restart_pressed"]
