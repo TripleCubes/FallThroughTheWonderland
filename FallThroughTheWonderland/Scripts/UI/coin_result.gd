@@ -25,7 +25,7 @@ func flipped(result: int) -> void:
 		_put_to_one_list(effect_list_0, effect_list_1)
 
 func reset() -> void:
-	_new_lists(1)
+	_new_lists(4)
 
 func _ready():
 	reset()

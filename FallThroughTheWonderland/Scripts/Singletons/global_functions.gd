@@ -42,17 +42,21 @@ func can_place_coin(pos: Vector2) -> bool:
 	return true
 
 func can_place_mushroom(pos: Vector2) -> bool:
+	var fairy_tile_y: = get_fairy_pos().y / 10
+
 	for i in range(_mushroom_list.get_child_count() - 1, -1, -1):
 		var mushroom: = _mushroom_list.get_child(i)
-		if pos.distance_to(mushroom.position) < Consts.MUSHROOM_DISTANCES:
+		if pos.distance_to(mushroom.position) < Consts.MUSHROOM_DISTANCES - fairy_tile_y/3:
 			return false
 
 	return true
 
 func can_place_cloud(pos: Vector2) -> bool:
+	var fairy_tile_y: = get_fairy_pos().y / 10
+
 	for i in range(_cloud_list.get_child_count() - 1, -1, -1):
 		var cloud: = _cloud_list.get_child(i)
-		if pos.distance_to(cloud.position) < Consts.CLOUD_DISTANCES:
+		if pos.distance_to(cloud.position) < Consts.CLOUD_DISTANCES - fairy_tile_y/3:
 			return false
 
 	return true
