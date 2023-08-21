@@ -17,7 +17,7 @@ layer_0/tile_data = PackedInt32Array(65446, 262144, 3, 65447, 262144, 3, 65448, 
 script = ExtResource("3_wgug8")
 
 [node name="Fairy" parent="." instance=ExtResource("1_o7v5p")]
-position = Vector2(-250, -62)
+position = Vector2(-250, 0)
 
 [node name="Camera2D" type="Camera2D" parent="Fairy"]
 position = Vector2(0, -10)
