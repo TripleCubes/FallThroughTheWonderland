@@ -14,18 +14,25 @@ extends Node2D
 
 @onready var _pause_menu = get_node("/root/View/Menus/PauseMenu")
 @onready var _restart_menu = get_node("/root/View/Menus/RestartMenu")
+@onready var _credits_menu = get_node("/root/View/Menus/CreditsMenu")
 
 func toggle_pause_menu() -> void:
 	if not _pause_menu.visible:
 		GlobalVars.showing_menus = true
 		_pause_menu.show()
 	else:
-		GlobalVars.showing_menus = false
-		_pause_menu.hide()
+		if not _credits_menu.visible:
+			GlobalVars.showing_menus = false
+			_pause_menu.hide()
 
 func show_restart_menu() -> void:
 	GlobalVars.showing_menus = true
 	_restart_menu.show()
+
+	_pause_menu.hide()
+
+func show_credits_menu() -> void:
+	_credits_menu.show()
 
 func get_tutorial() -> Node2D:
 	return _tutorial

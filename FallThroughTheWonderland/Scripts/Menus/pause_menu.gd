@@ -11,4 +11,4 @@ func _on_restart_pressed():
 	self.hide()
 
 func _on_credits_pressed():
-	pass # Replace with function body.
+	GlobalFunctions.show_credits_menu()

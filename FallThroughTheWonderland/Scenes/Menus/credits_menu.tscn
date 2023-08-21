@@ -1,0 +1,63 @@
+[gd_scene load_steps=5 format=3 uid="uid://cpdro7uj3qjy"]
+
+[ext_resource type="Script" path="res://Scripts/Menus/credits_menu.gd" id="1_mby0o"]
+[ext_resource type="Script" path="res://Scripts/Menus/UI/box.gd" id="2_0v5uv"]
+[ext_resource type="Theme" uid="uid://bond37gfa0v24" path="res://Styles/style.tres" id="3_pw8jb"]
+[ext_resource type="Script" path="res://Scripts/Menus/UI/button.gd" id="4_86p15"]
+
+[node name="CreditsMenu" type="Node2D"]
+texture_filter = 1
+script = ExtResource("1_mby0o")
+
+[node name="Menus_Box" type="Node2D" parent="."]
+position = Vector2(100, 50)
+scale = Vector2(2, 2)
+script = ExtResource("2_0v5uv")
+size = Vector2(400, 250)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+offset_left = 150.0
+offset_top = 100.0
+offset_right = 800.0
+offset_bottom = 360.0
+theme = ExtResource("3_pw8jb")
+theme_override_font_sizes/normal_font_size = 20
+text = "Art and codes by TripleCubes
+Written in 4 days for Mini Jam 139: Fae
+Limitation: Coin flipping as a mechanic
+
+Created using Godot engine, version 4.1.1"
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="."]
+offset_left = 150.0
+offset_top = 240.0
+offset_right = 322.0
+offset_bottom = 310.0
+theme = ExtResource("3_pw8jb")
+theme_override_font_sizes/normal_font_size = 40
+text = "Licenses"
+
+[node name="RichTextLabel3" type="RichTextLabel" parent="."]
+offset_left = 150.0
+offset_top = 290.0
+offset_right = 800.0
+offset_bottom = 550.0
+theme = ExtResource("3_pw8jb")
+theme_override_font_sizes/normal_font_size = 20
+text = "If you are playing on Windows, in the folder that contain the game exe there will be a README.md. The license informations is in that file.
+
+The license informations is also availabe at https://github.com/TripleCubes/FallThroughTheWonderland/blob/main/README.md"
+
+[node name="Back" type="Button" parent="."]
+offset_left = 150.0
+offset_top = 450.0
+offset_right = 222.0
+offset_bottom = 475.0
+scale = Vector2(2, 2)
+focus_mode = 0
+theme = ExtResource("3_pw8jb")
+text = "Back
+"
+script = ExtResource("4_86p15")
+
+[connection signal="pressed" from="Back" to="." method="_on_back_pressed"]
