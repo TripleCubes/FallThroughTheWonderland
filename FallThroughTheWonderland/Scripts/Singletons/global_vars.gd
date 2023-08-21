@@ -13,6 +13,8 @@ extends Node
 
 const _coin_scene: = preload("res://Scenes/Entities/coin.tscn")
 
+var showing_menus: = true
+
 var intro_shown: = false
 
 var game_started: = false:

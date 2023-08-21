@@ -48,7 +48,7 @@ var slow_falling: = false:
 			$Sprite/AnimatedSprite2DSlowFall.hide()
 
 func show_exclamation_mark() -> void:
-	GlobalFunctions.show_fade($ExclamationMark, 0, 0.8)
+	GlobalFunctions.show_fade($ExclamationMark, 0, 0, 0.8)
 
 func take_damage() -> void:
 	if $Sprite/FairyCenter.flicking:
@@ -107,16 +107,16 @@ func _physics_process(_delta):
 
 	var vel: = Vector2(0, 0)
 
-	if Input.is_action_pressed("KEY_A"):
+	if not GlobalVars.showing_menus and Input.is_action_pressed("KEY_A"):
 		vel += Vector2(-1, 0) * MOVE_SPEED * _delta
-	if Input.is_action_pressed("KEY_D"):
+	if not GlobalVars.showing_menus and Input.is_action_pressed("KEY_D"):
 		vel += Vector2(1, 0) * MOVE_SPEED * _delta
-	if is_on_floor() and Input.is_action_just_pressed("KEY_SPACE"):
+	if is_on_floor() and not GlobalVars.showing_menus and Input.is_action_just_pressed("KEY_SPACE"):
 		gravity = - JUMP_VELOCITY
 
 	gravity += GRAVITY_ACCELERATION * _delta
 
-	if Input.is_action_pressed("KEY_SPACE") and gravity > 0:
+	if not GlobalVars.showing_menus and Input.is_action_pressed("KEY_SPACE") and gravity > 0:
 		vel += Vector2(0, SLOW_FALL_VELOCITY) * _delta
 		gravity = SLOW_FALL_VELOCITY
 		slow_falling = true
@@ -124,7 +124,7 @@ func _physics_process(_delta):
 		vel += Vector2(0, gravity) * _delta
 		slow_falling = false
 
-	if Input.is_action_pressed("KEY_SPACE") \
+	if not GlobalVars.showing_menus and Input.is_action_pressed("KEY_SPACE") \
 	and GlobalFunctions.get_effects_stats().get_duration(EffectNames.Names.FLYING) > 0:
 		vel.y = FLY_VELOCITY * _delta
 		gravity = FLY_VELOCITY
@@ -151,7 +151,7 @@ func _on_area_2d_area_entered(in_area):
 		in_area.queue_free()
 
 func _throw_coin_process() -> void:
-	if Input.is_action_just_pressed("MOUSE_LEFT") and GlobalFunctions.get_stats().coin_count > 0:
+	if not GlobalVars.showing_menus and Input.is_action_just_pressed("MOUSE_LEFT") and GlobalFunctions.get_stats().coin_count > 0:
 		GlobalFunctions.get_stats().coin_count -= 1
 		var thrown_coin = _thrown_coin_scene.instantiate()
 		thrown_coin.dir = aiming_dir

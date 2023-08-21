@@ -1,0 +1,103 @@
+[gd_scene load_steps=5 format=3 uid="uid://jpqmygybyq81"]
+
+[ext_resource type="Script" path="res://Scripts/UI/tutorial.gd" id="1_nv3t3"]
+[ext_resource type="Texture2D" uid="uid://bhf0lhvecd2be" path="res://Assets/Sprites/tutorial_key_frame.png" id="1_wv5a5"]
+[ext_resource type="Theme" uid="uid://bond37gfa0v24" path="res://Styles/style.tres" id="2_w6bjy"]
+[ext_resource type="Texture2D" uid="uid://rme5rbi4ilu3" path="res://Assets/Sprites/tutorial_key_frame_space_bar.png" id="3_xugkx"]
+
+[node name="Tutorial" type="Node2D"]
+texture_filter = 1
+script = ExtResource("1_nv3t3")
+
+[node name="Move" type="Node2D" parent="."]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(60, 170)
+
+[node name="TutorialKeyFrame" type="Sprite2D" parent="Move"]
+position = Vector2(32, 24)
+texture = ExtResource("1_wv5a5")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Move/TutorialKeyFrame"]
+offset_left = -2.0
+offset_top = -6.0
+offset_right = 38.0
+offset_bottom = 34.0
+theme = ExtResource("2_w6bjy")
+text = "A"
+
+[node name="TutorialKeyFrame2" type="Sprite2D" parent="Move"]
+position = Vector2(63, 24)
+texture = ExtResource("1_wv5a5")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Move/TutorialKeyFrame2"]
+offset_left = -2.0
+offset_top = -6.0
+offset_right = 38.0
+offset_bottom = 34.0
+theme = ExtResource("2_w6bjy")
+text = "D"
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="Move"]
+offset_left = 24.0
+offset_top = 34.0
+offset_right = 64.0
+offset_bottom = 74.0
+theme = ExtResource("2_w6bjy")
+text = "Move"
+
+[node name="TutorialKeyFrameSpaceBar" type="Sprite2D" parent="Move"]
+position = Vector2(144, 24)
+texture = ExtResource("3_xugkx")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Move/TutorialKeyFrameSpaceBar"]
+offset_left = -11.0
+offset_top = -7.0
+offset_right = 29.0
+offset_bottom = 33.0
+theme = ExtResource("2_w6bjy")
+text = "Space"
+
+[node name="RichTextLabel3" type="RichTextLabel" parent="Move"]
+offset_left = 122.0
+offset_top = 34.0
+offset_right = 162.0
+offset_bottom = 74.0
+theme = ExtResource("2_w6bjy")
+text = "Jump"
+
+[node name="SlowFall" type="Node2D" parent="."]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(60, 170)
+
+[node name="TutorialKeyFrameSpaceBar" type="Sprite2D" parent="SlowFall"]
+position = Vector2(74, 27.5)
+texture = ExtResource("3_xugkx")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="SlowFall/TutorialKeyFrameSpaceBar"]
+offset_left = -11.0
+offset_top = -7.0
+offset_right = 29.0
+offset_bottom = 33.0
+theme = ExtResource("2_w6bjy")
+text = "Space"
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="SlowFall"]
+offset_left = 30.0
+offset_top = 23.5
+offset_right = 180.0
+offset_bottom = 63.5
+theme = ExtResource("2_w6bjy")
+text = "Hold                  to slow fall"
+
+[node name="ThrowCoin" type="Node2D" parent="."]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(60, 170)
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="ThrowCoin"]
+offset_left = 40.0
+offset_top = 24.0
+offset_right = 190.0
+offset_bottom = 64.0
+theme = ExtResource("2_w6bjy")
+text = "Left click to throw coin
+"

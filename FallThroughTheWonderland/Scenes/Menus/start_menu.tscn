@@ -1,0 +1,44 @@
+[gd_scene load_steps=4 format=3 uid="uid://fyqir8c1cu6y"]
+
+[ext_resource type="Script" path="res://Scripts/Menus/UI/button.gd" id="1_bwiru"]
+[ext_resource type="Theme" uid="uid://bond37gfa0v24" path="res://Styles/style.tres" id="1_d21vy"]
+[ext_resource type="Script" path="res://Scripts/Menus/start_menu.gd" id="1_pj84t"]
+
+[node name="StartMenu" type="Node2D"]
+texture_filter = 1
+script = ExtResource("1_pj84t")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+offset_left = 30.0
+offset_top = 20.0
+offset_right = 440.0
+offset_bottom = 130.0
+theme = ExtResource("1_d21vy")
+theme_override_font_sizes/normal_font_size = 40
+text = "Fall through the wonderland"
+
+[node name="Start" type="Button" parent="."]
+offset_left = 30.0
+offset_top = 130.0
+offset_right = 90.0
+offset_bottom = 150.0
+scale = Vector2(2, 2)
+focus_mode = 0
+theme = ExtResource("1_d21vy")
+text = "Start game"
+script = ExtResource("1_bwiru")
+
+[node name="Credits" type="Button" parent="."]
+offset_left = 30.0
+offset_top = 190.0
+offset_right = 90.0
+offset_bottom = 210.0
+scale = Vector2(2, 2)
+focus_mode = 0
+theme = ExtResource("1_d21vy")
+text = "Credits
+"
+script = ExtResource("1_bwiru")
+
+[connection signal="pressed" from="Start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="Credits" to="." method="_on_credits_pressed"]

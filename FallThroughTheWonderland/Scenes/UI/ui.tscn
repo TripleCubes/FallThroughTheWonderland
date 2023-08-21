@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://crj8we6omf3ii"]
+[gd_scene load_steps=6 format=3 uid="uid://crj8we6omf3ii"]
 
 [ext_resource type="PackedScene" uid="uid://t6luoyca32d2" path="res://Scenes/UI/coin_results.tscn" id="1_o2f33"]
 [ext_resource type="PackedScene" uid="uid://b6xd1jw2fx1oq" path="res://Scenes/UI/stats.tscn" id="2_xtu1k"]
 [ext_resource type="Theme" uid="uid://bond37gfa0v24" path="res://Styles/style.tres" id="3_fixwy"]
 [ext_resource type="Script" path="res://Scripts/UI/depth.gd" id="4_ikjrj"]
+[ext_resource type="PackedScene" uid="uid://jpqmygybyq81" path="res://Scenes/UI/tutorial.tscn" id="5_a4xxa"]
 
 [node name="UI" type="Node2D"]
 texture_filter = 1
@@ -26,3 +27,5 @@ theme = ExtResource("3_fixwy")
 text = "100cm"
 text_direction = 2
 script = ExtResource("4_ikjrj")
+
+[node name="Tutorial" parent="." instance=ExtResource("5_a4xxa")]

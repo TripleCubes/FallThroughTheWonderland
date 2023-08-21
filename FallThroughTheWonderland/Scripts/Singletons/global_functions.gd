@@ -10,6 +10,10 @@ extends Node2D
 
 @onready var _stats = get_node(Consts.UI_PATH + "Stats")
 @onready var _effects_stats = get_node(Consts.UI_PATH + "Stats/Effects")
+@onready var _tutorial = get_node(Consts.UI_PATH + "Tutorial")
+
+func get_tutorial() -> Node2D:
+	return _tutorial
 
 func get_stats() -> Node2D:
 	return _stats
@@ -130,12 +134,15 @@ func clear_list(list: Node2D) -> void:
 	for element in list.get_children():
 		element.queue_free()
 
-func show_fade(node: Node, fade_time: float, duration: float) -> void:
-	var tween: = get_tree().create_tween()
-	tween.tween_property(node, "modulate", Color(1, 1, 1, 1), fade_time)
-
-	var timer: = get_tree().create_timer(duration)
+func show_fade(node: Node, wait: float, fade_time: float, duration: float) -> void:
+	var timer = get_tree().create_timer(wait)
 	timer.timeout.connect(func():
-		var tween_0: = get_tree().create_tween()
-		tween_0.tween_property(node, "modulate", Color(1, 1, 1, 0), fade_time)
+		var tween: = get_tree().create_tween()
+		tween.tween_property(node, "modulate", Color(1, 1, 1, 1), fade_time)
+
+		var timer_0: = get_tree().create_timer(duration)
+		timer_0.timeout.connect(func():
+			var tween_0: = get_tree().create_tween()
+			tween_0.tween_property(node, "modulate", Color(1, 1, 1, 0), fade_time)
+		)
 	)
