@@ -73,32 +73,6 @@ func _process(_delta):
 
 	queue_redraw()
 
-func _set_camera_pos() -> void:
-	if not GlobalVars.game_started:
-		$Camera2D.position.x = 0
-		return
-
-	$Camera2D.global_position.x = 250
-
-func _on_area_2d_body_entered(body):
-	if body.get_parent() == _mushroom_list \
-	or body.get_parent() == _cloud_list:
-		take_damage()
-
-func _on_area_2d_area_entered(in_area):
-	if in_area.get_parent() == _rain_list:
-		take_damage()
-		in_area.queue_free()
-
-func _throw_coin_process() -> void:
-	if Input.is_action_just_pressed("MOUSE_LEFT") and GlobalFunctions.get_stats().coin_count > 0:
-		GlobalFunctions.get_stats().coin_count -= 1
-		var thrown_coin = _thrown_coin_scene.instantiate()
-		var mouse_pos: Vector2 = GlobalFunctions.get_local_mouse_pos(self)
-		thrown_coin.dir = (mouse_pos - $Sprite.position).normalized()
-		thrown_coin.global_position = $Sprite.global_position
-		_thrown_coin_list.add_child(thrown_coin)
-
 func _physics_process(_delta):
 	if Engine.is_editor_hint():
 		return
@@ -133,3 +107,29 @@ func _physics_process(_delta):
 
 	velocity = vel
 	move_and_slide()
+
+func _set_camera_pos() -> void:
+	if not GlobalVars.game_started:
+		$Camera2D.position.x = 0
+		return
+
+	$Camera2D.global_position.x = 250
+
+func _on_area_2d_body_entered(body):
+	if body.get_parent() == _mushroom_list \
+	or body.get_parent() == _cloud_list:
+		take_damage()
+
+func _on_area_2d_area_entered(in_area):
+	if in_area.get_parent() == _rain_list:
+		take_damage()
+		in_area.queue_free()
+
+func _throw_coin_process() -> void:
+	if Input.is_action_just_pressed("MOUSE_LEFT") and GlobalFunctions.get_stats().coin_count > 0:
+		GlobalFunctions.get_stats().coin_count -= 1
+		var thrown_coin = _thrown_coin_scene.instantiate()
+		var mouse_pos: Vector2 = GlobalFunctions.get_local_mouse_pos(self)
+		thrown_coin.dir = (mouse_pos - $Sprite.position).normalized()
+		thrown_coin.global_position = $Sprite.global_position
+		_thrown_coin_list.add_child(thrown_coin)

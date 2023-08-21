@@ -7,8 +7,11 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_iu3f5"]
 shader = ExtResource("2_40t23")
+shader_parameter/fairy_glow_distance = 0.0
 shader_parameter/fairy_pos_on_cam = null
 shader_parameter/darkness_enabled = false
+shader_parameter/glow_list = null
+shader_parameter/glow_list_size = null
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_2c8cb"]
 viewport_path = NodePath("SubViewport")
