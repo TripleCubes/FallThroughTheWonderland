@@ -20,6 +20,8 @@ func _process(_delta):
 
 func _place_walls() -> void:
 	for i in range(floor(_fairy.position.y / 10) - 20, floor(_fairy.position.y / 10 )+ 20):
+		if i <= 1: 
+			continue
 		set_cell(0, Vector2i(5, i), 0, Vector2i(0, 1))
 		set_cell(0, Vector2i(44, i), 0, Vector2i(1, 1))
 

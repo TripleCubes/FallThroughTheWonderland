@@ -11,6 +11,9 @@ extends Node2D
 @onready var _stats = get_node(Consts.UI_PATH + "Stats")
 @onready var _effects_stats = get_node(Consts.UI_PATH + "Stats/Effects")
 
+func restart_game() -> void:
+	pass
+
 func get_stats() -> Node2D:
 	return _stats
 

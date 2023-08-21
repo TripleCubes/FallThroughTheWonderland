@@ -12,6 +12,9 @@ var _timer: float = 0
 func _process(_delta):
 	$Cloud.position.y = sin(float(Time.get_ticks_msec() + rnd_time) / 100) * 0.5
 
+	if not GlobalVars.game_started:
+		return
+
 	_timer += _delta / ATTACK_DELAY
 
 	if _timer > 1:

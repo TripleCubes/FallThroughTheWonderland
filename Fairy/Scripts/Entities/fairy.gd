@@ -64,7 +64,20 @@ func _process(_delta):
 
 	_throw_coin_process()
 
+	if self.position.x > 250 + 1000:
+		self.position.x = 250 + 1000
+	elif self.position.x < 250 - 1000:
+		self.position.x = 250 - 1000
+
+	_set_camera_pos()
+
 	queue_redraw()
+
+func _set_camera_pos() -> void:
+	if not GlobalVars.game_started:
+		return
+
+	$Camera2D.global_position.x = 250
 
 func _on_area_2d_body_entered(body):
 	if body.get_parent() == _mushroom_list \

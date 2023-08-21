@@ -9,6 +9,8 @@ const FLIP_ROTATION_SPEED_DEGREE_PER_SEC: float = 360
 
 @onready var rnd_time: float = randf_range(0, 1000)
 
+@export var dont_flip: bool
+
 var flip_progress: float = 0
 
 func _process(_delta):
@@ -43,7 +45,10 @@ func _flip_animation(_delta: float) -> void:
 		return
 
 	var flip_result: = randi_range(0, 1)
-	_coin_result.flipped(flip_result)
+	if dont_flip:
+		GlobalVars.game_started = true
+	else:
+		_coin_result.flipped(flip_result)
 	_stats.coin_count += 1
 	_stats.glow = 1
 	_start_number_animation(flip_result)
