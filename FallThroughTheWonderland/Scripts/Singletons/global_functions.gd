@@ -117,3 +117,11 @@ func get_aim_snap_result(line_p1: Vector2, line_p2: Vector2) -> Dictionary:
 	search.call(_cloud_list, 0, result)
 
 	return result
+
+func clear_all_enemies() -> void:
+	clear_list(_cloud_list)
+	clear_list(_mushroom_list)
+
+func clear_list(list: Node2D) -> void:
+	for element in list.get_children():
+		element.queue_free()

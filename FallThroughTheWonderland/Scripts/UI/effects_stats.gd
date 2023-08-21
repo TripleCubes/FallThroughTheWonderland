@@ -7,6 +7,14 @@ func get_duration(effect_name: EffectNames.Names) -> float:
 	return progress_bar.progress * progress_bar.reverse_fill_time_sec
 
 func apply_effect(effect_name: EffectNames.Names) -> void:
+	if effect_name == EffectNames.Names.HEART:
+		GlobalFunctions.get_stats().health_count += 1
+		return
+
+	if effect_name == EffectNames.Names.CLEAR_ALL_ENEMIES:
+		GlobalFunctions.clear_all_enemies()
+		return
+
 	var effect_node = _effect_node_list[effect_name]
 	effect_node.progress_bar.progress = 1
 	

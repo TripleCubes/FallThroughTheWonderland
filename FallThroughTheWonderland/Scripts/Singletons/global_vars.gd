@@ -37,10 +37,10 @@ func _open_hole() -> void:
 		)
 
 func _restart_game() -> void:
-	_clear_list(_coin_list)
-	_clear_list(_mushroom_list)
-	_clear_list(_cloud_list)
-	_clear_list(_rain_list)
+	GlobalFunctions.clear_list(_coin_list)
+	GlobalFunctions.clear_list(_mushroom_list)
+	GlobalFunctions.clear_list(_cloud_list)
+	GlobalFunctions.clear_list(_rain_list)
 
 	_stats.coin_count = 0
 	_stats.health_count = 3
@@ -69,7 +69,3 @@ func _map_reset() -> void:
 	first_coin.position.x = 250
 	first_coin.dont_flip = true
 	_coin_list.add_child(first_coin)
-
-func _clear_list(list: Node2D) -> void:
-	for element in list.get_children():
-		element.queue_free()
